@@ -1,0 +1,181 @@
+\section{Question 1}
+
+\begin{question}
+    This question regards the construction of the notion of the Lebesgue integral. Solve Exercise 4.1.3 on page 123, and Exercise 4.2.5 on page 129, of the textbook.
+
+    Remark: Questions 2-4 regard the theorems relating integral and convergence almost everywhere.
+\end{question}
+
+\subsection{Exercise 4.1.3}
+
+\begin{question}
+    Let $\phi$ and $\psi$ be nonnegative simple functions defined on a measurable set $E \subseteq \mathbb{R}^d$. Prove the following statements..
+\end{question}
+
+\subsubsection{Part a}
+
+\begin{question}
+    (a) If $\phi \leq \psi$, then $\int_E \phi \leq \int_E \psi$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $\phi$ and $\psi$ are nonnegative simple functions and $\phi \leq \psi$, then $f(x) = \psi(x) - \phi(x) \geq 0$ for all $x$ and $f(x)$ is also a nonnegative simple function. Also, because $f(x)$ can be rewritten as $\psi(x) + (-\phi(x))$ and $-\phi(x)$ is also a nonnegative simple function, then
+        \begin{equation}
+            \int_E f(x) \,dx  = \int_E \psi(x) +(-\phi(x)) \,dx = \int_E\psi(x) \,dx + \int_E (-\phi(x))\,dx = \int_E \psi(x) - \int_E \phi(x) \,dx \geq 0
+        \end{equation}
+        Therefore, we have $\int_E \phi(x) \,dx \leq \int_E \psi(x) \,dx$.
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part b}
+
+\begin{question}
+    (b) $\int_E \phi=0$ if and only if $\phi=0$ a.e.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        ($\Leftarrow$): Assume $\phi = 0$ a.e. Then 
+        \begin{equation}
+            \phi(x) = \sum_{k=1}^{m}0\cdot \mathbb{1}_{E_k}(x) + \sum_{l=1}^{n} c_l \cdot \mathbb{1}_{A_l}(x)
+        \end{equation}
+        where $E_1,\cdots, E_m$ are nonzero measurable sets and $A_1,\cdots, A_l$ are measure zero sets, and $E = \bigcup_{k=1}^{m}E_k \cup \bigcup_{l=1}^{n}A_l$.
+        
+        Thus, if we compute the Lebesgue integral of $\phi(x)$, we have
+        \begin{equation}
+                \int_E \phi(x) \,dx = \sum_{k=1}^{m}0 \cdot \lvert E_k \rvert + \sum_{l=1}^{n}c_l \cdot \lvert A_l \rvert = 0 + \sum_{l=1}^{n} c_l \cdot 0 = 0 + 0 = 0
+        \end{equation}
+        
+        ($\Rightarrow$): We will show this by proving the contrapositive of the statement. Assume $\phi > 0$ on some nonzero measurable set. Because $\phi$ is a nonnegative simple function, then the assumption means that $\phi(x) = c$ on some nonzero measurable set $E_1$. Hence, let
+        \begin{equation}
+            \phi(x)= \sum_{k=1}^{m} c_k \cdot \mathbb{1}_{E_k}(x) = c \cdot \mathbb{1}_{E_1}(x) + \sum_{k=2}^{m} c_k \cdot \mathbb{1}_{E_k}(x)
+        \end{equation}
+        Then, 
+        \begin{equation}
+            \int_E \phi(x) \,dx = \sum_{k=1}^{m} c_k \cdot \lvert E_k \rvert \geq c \cdot \lvert E_1 \rvert > c \cdot 0 = 0
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part c}
+
+\begin{question}
+    If $A \subseteq E$ is measurable, then $\phi \mathbb{1}_A$ is a simple function and
+    $$
+    \int_A \phi=\int_E \phi \mathbb{1}_A.
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        \begin{equation}\label{eqn:eqn6}
+            \phi\mathbb{1}_A = \sum_{k = 1}^{m}c_k \cdot \mathbb{1}_{E_k}\cdot \mathbb{1}_{A} = \sum_{k=1}^{m}c_k \cdot \mathbb{1}_{E_k\cap A}.
+        \end{equation}
+        Since if either $x \notin E_k$ or $x \notin A$, then $\mathbb{1}_{E_k} \cdot \mathbb{1}_{A} = 0$, which means $\mathbb{1}_{E_k\cap A} = \mathbb{1}_{E_k} \cdot \mathbb{1}_A$. By equation \ref{eqn:eqn6}, we know that $\phi\mathbb{1}_A$ is a simple function by definition.
+        
+        Now, if we compute the lebesgue integral of $\phi\mathbb{1}_A$, we have
+        \begin{equation}
+            \int_E \phi(x)\mathbb{1}_A(x) \,dx = \sum_{k=1}^{m} c_k \cdot \lvert E_k \cap A \rvert = \sum_{k=1}^{m} c_{k} \cdot \lvert E_{k} \cap A \rvert = \int_A \phi(x) \,dx,
+        \end{equation}
+        since $A = \bigcup_{k = 1}^{m} (E_k \cap A)$.
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part d}
+
+\begin{question}
+    If $A_1, A_2, \ldots$ are disjoint measurable subsets of $E$ and $A=\bigcup A_n$, then
+    $$
+    \int_A \phi=\sum_{n=1}^{\infty} \int_{A_n} \phi .
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        By Part c, we know that $\int_A \phi = \int_E \phi \mathbb{1}_A$. Then since $A = \bigcup A_n$ and $A_1,A_2,\cdots$ are disjoint and measurable, then
+        \begin{equation}
+            \int_A \phi = \int_E \phi \mathbb{1}_A = \int_E \phi(\sum_{n=1}^{\infty} \mathbb{1}_{A_n}) = \int_E \sum_{n=1}^{\infty} \phi\mathbb{1}_{A_n} = \sum_{n=1}^{\infty}\int_E \phi\mathbb{1}_{A_n} = \sum_{n=1}^{\infty} \int_A \phi
+        \end{equation}
+        since each $\phi\mathbb{1}_{A_n}$ is a nonnegative simple function by Part c.
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part e}
+
+\begin{question}
+    If $A_1 \subseteq A_2 \subseteq \cdots$ are nested measurable subsets of $E$ and $A=\bigcup A_n$, then
+    $$
+    \int_A \phi=\lim _{n \rightarrow \infty} \int_{A_n} \phi.
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $\phi = \sum_{k=1}^{m} c_k \cdot \mathbb{1}_{E_k}$, then, by Part c,
+        \begin{equation}
+            \lim_{n \to \infty} \int_{A_n} \phi = \lim_{n \to \infty} \sum_{k=1}^{m}c_k \cdot \lvert A_n \cap E_k \rvert = \sum_{k=1}^{m} c_k \cdot \lim_{n \to \infty} \lvert A_n \cap E_k \rvert
+        \end{equation}
+        Now, notice that since $A_1 \subseteq A_2 \subseteq \cdots$, then $A_1 \cap E_k \subseteq A_2 \cap E_k \subseteq \cdots$ for each single $k$. This means, by the continuity from below, we have $\lim_{n \to \infty}  (A_n \cap E_k) = \bigcup_{n = 1}^{\infty}(A_n \cap E_k) = A\cap E_k$. Thus,
+        \begin{equation}
+            \lim_{n \to \infty} \int_{A_n} \phi = \sum_{k=1}^{m} c_k \cdot \lim_{n \to \infty} \lvert A_n \cap E_k \rvert = \sum_{k=1}^{m} c_k \cdot \lvert A \cap E_k \rvert = \int_E \phi\cdot\mathbb{1}_{A} = \int_A \phi
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsection{Exercise 4.2.5}
+
+\begin{question}
+    Let $E \subseteq \mathbb{R}^d$ be a measurable set. Given a nonnegative measurable function $f: E \rightarrow[0, \infty]$, prove the following statements.
+\end{question}
+
+\subsubsection{Part a}
+
+\begin{question}
+    If $A_1, A_2, \ldots$ are disjoint measurable subsets of $E$ and $A=\bigcup A_n$, then
+    $$
+    \int_A f=\sum_{n=1}^{\infty} \int_{A_n} f
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $f$ is a nonnegative measurable function, then we have:
+        \begin{equation}
+                \sum_{n=1}^{\infty} \int_{A_n} f = \sum_{n=1}^{\infty} \int_A f \cdot \mathbb{1}_{A_n} = \int_A \sum_{n=1}^{\infty} f \cdot \mathbb{1}_{A_n} = \int_A f \cdot \sum_{n=1}^{\infty} \mathbb{1}_{A_n} = \int_A f \cdot \mathbb{1}_A = \int_A f
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part b}
+
+\begin{question}
+    If $A_1 \subseteq A_2 \subseteq \cdots$ are nested measurable subsets of $E$ and $A=\bigcup A_n$, then
+    $$
+    \int_A f=\lim _{n \rightarrow \infty} \int_{A_n} f
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Because $f$ is a nonnegative measurable function, then there exist a collection of simple functions $\phi_k(x)$ such that $\phi_{k} \nearrow f$. By Monotone Convergence Theorem for simple functions, we have, $\int_A \phi_k \nearrow \int_A f$.
+        
+        Now, let $\varepsilon > 0$, there exists $k_0 \in \mathbb{N}$, such that $0 \leq \int_A f - \int_A \phi_{k_0} < \tfrac{\varepsilon}{3}$. Let $\phi = \phi_{k_0}$. Note for $j \in \mathbb{N}$, 
+        \begin{equation}
+            \begin{aligned}
+                &\int_{A_j} f = \int_{A_j} [(f-\phi) + \phi] = \int_{A_j} (f-\phi) + \int_{A_j} \phi\\
+                \Rightarrow& 0 \leq \int_{A_j} f - \int_{A_j} \phi = \int_{A_j} (f-\phi) \leq \int_A (f - \phi) = \int_A f - \int_A \phi < \tfrac{\varepsilon}{3}
+            \end{aligned}
+         \end{equation}
+        
+        Because $A_1 \subseteq A_2 \subseteq \cdots$ and $A = \bigcup A_n$, by continuity from below, we have $A = \lim_{n \to \infty} A_n$. Also, because $\phi$ is a simple function, then we have $\int_A \phi = \lim_{j \to \infty} \int_{A_j} \phi$. Hence, there exists $N \in \mathbb{N}$, such that $0 \leq \int_A \phi - \int_{A_j} \phi < \tfrac{\varepsilon}{3}$. Using the same $N$, we have
+        \begin{equation}
+            \begin{aligned}
+                0 \leq \int_A f - \int_{A_j} f =& \int_A f - \int_A \phi + \int_A \phi - \int_{A_j} \phi + \int_{A_j} \phi - \int_{A_j} f\\
+                \leq& \left(\int_A f - \int_A \phi \right) + \left(\int_A \phi - \int_{A_j} \phi \right) + \left(\int_{A_j} \phi - \int_{A_j} f \right)\\
+                \leq& \tfrac{\varepsilon}{3} + \tfrac{\varepsilon}{3} + \tfrac{\varepsilon}{3} = \varepsilon
+            \end{aligned}
+        \end{equation}
+        This shows that $\int_A f = \lim_{j \to \infty} \int_{A_j} f$.
+    \end{proof}
+\end{answer}

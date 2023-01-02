@@ -1,0 +1,153 @@
+\section{Question 2}
+
+\begin{question}
+   Let $E \subset \mathbb{R}^d$ be a measurable set, and assume $f_n, f, g_n, g: E \rightarrow \mathbb{R}$ (or $\mathbb{C}$ ) are measurable and finite a.e. Prove the following statements.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    If $f_n$ converges both to $f$ and to $g$ in measure then $f=g$ a.e.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $f_n$ converges both to $f$ and to $g$ in measure. Then let $\varepsilon > 0$, $\delta > 0$, and let $Z_1 = \{x \in E \mid \lvert f_n(x) - f(x) \rvert \geq \tfrac{\delta}{2}\}$ and $Z_2 = \{x \in E \mid \lvert f_{n}(x) - f(x) \rvert > \tfrac{\delta}{2}\}$, then $\exists N_1, N_2 \in \mathbb{N}$, such that $\forall\, n > N_1$ we have $\lvert \{x \in E \mid \lvert f_{n}(x) - f(x) \rvert \geq \tfrac{\delta}{2}\} \rvert < \tfrac{\varepsilon}{2}$, and $\forall\, n > N_2$, we have $\lvert \{x \in E \mid \lvert f_{n}(x) - f(x) \rvert > \tfrac{\delta}{2}\} \rvert < \tfrac{\varepsilon}{2}$. Now, let $N = \max (N_1,N_2)$, we have $\forall \, n > N$, $\lvert Z_1 \rvert < \tfrac{\varepsilon}{2}$ and $\lvert Z_2 \rvert < \tfrac{\varepsilon}{2}$. Then, since if $x \in \{x \in E \mid \lvert f(x) - g(x) \rvert > \delta\}$, then $x \in Z_1 \cup Z_2$. Therefore, $\{x \in E \mid \lvert f(x)-g(x) \rvert > \delta\} \subseteq
+        Z_1 \cup Z_2$. Hence, by the countable sub-additivity,
+        \begin{equation}
+            \lvert \{x \in E \mid \lvert f(x)-g(x) \rvert > \tfrac{\varepsilon}{2}\} \rvert \leq \lvert Z_1 \cup Z_2 \rvert = \lvert Z_1 \rvert + \lvert Z_2 \rvert = \varepsilon
+        \end{equation}
+        Thus, this shows that $f = g$ a.e.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    If $f_n$ converges to $f$ in measure and $g_n$ converges to $g$ in measure then $f_n+g_n$ converges to $f+g$ in measure.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $f_n$ converges both to $f$ and to $g$ in measure. Then let $\varepsilon > 0$, $\delta > 0$, and let $Z_1 = \{x \in E \mid \lvert f_n(x) - f(x) \rvert \geq \tfrac{\delta}{2}\}$ and $Z_2 = \{x \in E \mid \lvert f_{n}(x) - f(x) \rvert > \tfrac{\delta}{2}\}$, then $\exists N_1, N_2 \in \mathbb{N}$, such that $\forall\, n > N_1$ we have $\lvert \{x \in E \mid \lvert f_{n}(x) - f(x) \rvert \geq \tfrac{\delta}{2}\} \rvert < \tfrac{\varepsilon}{2}$, and $\forall\, n > N_2$, we have $\lvert \{x \in E \mid \lvert f_{n}(x) - f(x) \rvert > \tfrac{\delta}{2}\} \rvert < \tfrac{\varepsilon}{2}$. Now, let $N = \max (N_1,N_2)$, we have $\forall \, n > N$, $\lvert Z_1 \rvert < \tfrac{\varepsilon}{2}$ and $\lvert Z_2 \rvert < \tfrac{\varepsilon}{2}$. If we take $x \in Z_1^c \cap Z_2^c$, then we have $\forall \, n > N$, we have:
+        \begin{equation}
+            \begin{aligned}
+                &\lvert (f_n+g_n)(x) - (f+g)(x) \rvert\\
+                &= \lvert (f_n(x)+g_n(x)) - (f(x)+g(x)) \rvert\\
+                &= \lvert (f_n(x) - f(x)) + (g_n(x) - g(x)) \rvert\\
+                &\leq \lvert f_n(x) - f(x) \rvert + \lvert g_n(x) - g(x) \rvert\\
+                &\leq  \tfrac{\delta}{2} + \tfrac{\delta}{2} = \delta
+            \end{aligned}
+        \end{equation}
+        by triangular inequality. Therefore if $x \in \{\lvert (f_n+g_n)(x) - (f+g)(x) \rvert > \delta\}$, then $x \in (Z_1^c \cap Z_2^c)^c = Z_1 \cup Z_2$. Hence, $\{\lvert (f_n+g_n) - (f+g) \rvert > \delta\} \subseteq Z_1 \cup Z_2$. Now by countable subadditivity, we have
+        Hence, by the countable sub-additivity, for all $n > N$, we have
+        \begin{equation}
+            \lvert \{\lvert (f_n+g_n) - (f+g) \rvert > \delta\} \rvert \leq \lvert Z_1 \cup Z_2 \rvert = \lvert Z_1 \rvert + \lvert Z_2 \rvert = \varepsilon
+        \end{equation}
+        Thus, $f_n+g_n$ converges to $f+g$ in measure.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Assume that $|E|<\infty$. If $f_n$ converges to $f$ in measure and $g_n$ converges to $g$ in measure then $f_n g_n$ converges to $f g$ in measure.
+\end{question}
+
+\begin{answer}
+    \begin{prop}\label{prop:prop1}
+        Assume that $\lvert E \rvert < \infty$. If $f_n$ converges to $f$ in measure, then $f_n^2$ converges to $f^2$ in measure.
+    \end{prop}
+    
+    \begin{proof}
+         First, let
+        \begin{equation}
+            A_k = \{\lvert f_n + f \rvert > k\}
+        \end{equation}
+        we have $A_1 \supset A_2 \supset A_3 \supset \cdots$. Then by the continuity from above, because $\lvert A_k \rvert < \lvert E \rvert < \infty$ for all $k$, $\lim_{k \to \infty} \lvert A_k \rvert = \bigcap_{k = 1}^{\infty} \lvert A_k \rvert = \lvert \emptyset \rvert = 0$. Then, there exists $N_2, k \in \mathbb{N}$ such that $\forall n > N_2$, $\lvert A_k \rvert < \tfrac{\varepsilon}{2}$. Let $\varepsilon > 0$ and $\delta > 0$. Then since $f_n$ converges to $f$ in measure, then $\exists \, N_1$ such that $\forall \, n > N_1$, $\lvert \{\lvert f_{n} - f \rvert > \tfrac{\delta}{k}\}\rvert < \tfrac{\varepsilon}{2}$.
+        
+        Now, let $N = \max(N_1,N_2)$, then $\forall \, n > N$, we have
+        \begin{equation}
+            \begin{aligned}
+                &\lvert \{\lvert f_n^2 - f^2 \rvert > \delta\}\rvert\\
+                &= \lvert \{\lvert f_n - f \rvert \lvert f_n + f \rvert > \delta\}\rvert\\
+                &= \lvert \left (\{\lvert f_n - f \rvert \lvert f_n + f \rvert > \delta\} \cap \{\lvert f_n + f \rvert > k\} \right) \cup \left(\{\lvert f_n - f \rvert \lvert f_n + f \rvert > \delta\} \cap \{\lvert f_n + f \rvert \leq k\}\right) \rvert\\
+                &\leq \lvert \{\lvert f_n - f \rvert \lvert f_n + f \rvert > \delta\} \cap A_k \rvert + \lvert \{\lvert f_n - f \rvert \lvert f_n + f \rvert > \delta\} \cap \{\lvert f_n + f \rvert \leq k\} \rvert\\
+                &\leq \lvert A_k \rvert + \lvert \{\vert f_n - f \rvert > \tfrac{\delta}{k}\} \rvert\\
+                &< \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon.
+            \end{aligned}
+        \end{equation}
+        Thus, we proved that $f_n$ converges to $f$ in measure by definition.
+    \end{proof}
+    \begin{proof}
+        By Part ii, we know that if $f_n,g_n$ converges to $f,g$ in measure, we could show $f_n+g_n$ converges to $f + g$ in measure. Similarly, if we take $g' = -g$ and $g_n' = -g_n$, then we know that $f_n + g_n'$ converges to $f+g$ in measure, i.e. $f_n-g_n$ converges to $f-g$ in measure. Now, if we apply the result from Proposition \ref{prop:prop1}, we could see that $(f_n+g_n)^2, (f_n-g_n)^2$ converges to $(f+g)^2$ and $(f-g)^2$ in measure. Hence, applyinf Part ii again, we know that $4f_ng_n = (f_n+g_n)^2-(f_n-g_n)^2$ converges to $4fg = (f+g)^2 - (f-g)^2$ in measure. This implies $f_ng_n$ converges to $fg$ in measure by definition if we modify the measure zero set by dividing $4$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iv}
+
+\begin{question}
+   If $|E|=\infty$ then the conclusion in (iii) may fail.
+\end{question}
+
+\begin{answer}
+    Let $E = \mathbb{R}$. If we take $f_n = g_n = x + \tfrac{1}{n}$, and $f = g = x$. Then we have $f_n,g_n$ converges to $f$ and $g$ in measure. However, $f_ng_n = x^2 + \tfrac{2x}{n} + \tfrac{1}{n^2}$, and let $\delta > 0$
+    \begin{equation}
+        \begin{aligned}
+            \lvert \{\lvert f_ng_n - fg \rvert > \delta\} \rvert &= \lvert \{x \in \mathbb{R} \mid \lvert \tfrac{2x}{n} + \tfrac{1}{n^2}\rvert > \delta\} \rvert\\
+            &\geq  \lvert \{x \in \mathbb{R} \mid  \tfrac{2x}{n} + \tfrac{1}{n^2} > \delta\} \rvert\\
+            &= \lvert \{ x \in \mathbb{R} \mid x > \tfrac{\delta n^2 - 1}{2n} \} \rvert = \infty
+        \end{aligned}
+    \end{equation}
+    Thus, $f_ng_n$ doesn't converge to $fg$ in measure.
+\end{answer}
+
+\subsection{Part v}
+
+\begin{question}
+   If $f_n$ converges to $f$ in measure, and there is some $\delta>0$ so that for every $n$ we have $f_n>\delta$ a.e., then $1 / f_n$ converges to $1 / f$ in measure.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $\varepsilon > 0$, $\eta > 0$. Then, since $f_n$ converges to $f$ in measure, there exists $N \in \mathbb{N}$ such that $\forall \, n>N$, we have:
+        \begin{equation}\label{eqn:eqn7}
+            \left\lvert \left\{\lvert f_n -f \rvert > \tfrac{\eta \delta^2}{2}\right\}\right\rvert < \tfrac{\varepsilon}{2}
+        \end{equation}
+        \begin{equation}\label{eqn:eqn8}
+            \left\lvert \left\{\lvert f_n-f\rvert > \tfrac{\delta}{2}\right\} \right\rvert < \tfrac{\varepsilon}{2}
+        \end{equation}
+        Then, using the same $N$, we could show that $\forall \, n > N$, we have:
+        \begin{equation}
+            \begin{aligned}
+                \left\{\left\lvert\tfrac{1}{f_n} - \tfrac{1}{f}\right\rvert > \eta \right\} &= \{\lvert f_n - f\rvert > \eta \lvert f_n \rvert \lvert f \rvert\}\\
+                &=\{\lvert f_n - f\rvert > \eta \delta \lvert f \rvert\} \text{ (by the assumption $\lvert f_n \rvert >\delta,\, \forall \, n$)}\\
+                &= \left(\{\lvert f_n - f\rvert > \eta \delta \lvert f \rvert\}\cap \left\{\left\lvert f \right\rvert > \tfrac{\delta}{2}\right\}\right) \cup \left(\{\lvert f_n - f\rvert > \eta \delta \lvert f \rvert\}\cap \left\{\left\lvert f \right\rvert \leq \tfrac{\delta}{2}\right\}\right)\\
+                & \subseteq \left\{\lvert f_n -f \rvert > \tfrac{\eta\delta^2}{2}\right\} \cup \left\{\lvert f \rvert \leq \tfrac{\delta}{2}\right\}\\
+                & \subseteq \left\{\lvert f_n -f \rvert > \tfrac{\eta\delta^2}{2}\right\} \cup \left\{\lvert f_n - f \rvert > \tfrac{\delta}{2}\right\}\\
+                &\text{(Because if $x \in \left\{\lvert f \rvert \leq \tfrac{\delta}{2}\right\}$, then $\lvert f_n(x) - f(x) \rvert > \tfrac{\delta}{2}$ due to $f_n > \delta \,\forall \, n$).}
+            \end{aligned}
+        \end{equation}
+        Then, if we look at the measure of the above inclusion, we have
+        \begin{equation}
+            \begin{aligned}
+                \left\lvert\left\{\left\lvert\tfrac{1}{f_n} - \tfrac{1}{f}\right\rvert > \eta \right\}\right\rvert &\leq \left\lvert \left\{\lvert f_n -f \rvert > \tfrac{\eta\delta^2}{2}\right\} \cup \left\{\lvert f_n - f \rvert > \tfrac{\delta}{2}\right\} \right\rvert\\
+                & \leq \left\lvert \left\{\lvert f_n -f \rvert > \tfrac{\eta\delta^2}{2}\right\}\right \rvert + \left\lvert\left\{\lvert f_n - f \rvert > \tfrac{\delta}{2}\right\}\right\rvert\\
+                &< \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} \text{ (by equations \ref{eqn:eqn7} and \ref{eqn:eqn8})}.
+            \end{aligned}
+        \end{equation}
+        Thus, we know that $\tfrac{1}{f_n}$ converges to $\tfrac{1}{f}$ in measure.
+    \end{proof}
+\end{answer}
+
+\subsection{Part vi}
+
+\begin{question}
+   Assume that $|E|<\infty$ and Let $\epsilon>0$. If $f_n$ converges to $f$ in measure, then there exists a subsequence $\left\{f_{n_k}\right\}$ and a subset $A \subset E$ of measure $|A|<\epsilon$ such that $\left\{f_{n_k}\right\}$ converges uniformly to $f$ on $E-A$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+    From the Lemma proved in class, since $f_n$ converges to $f$ in measure, then $\exists \, \{f_{n_k}\}_k$ such that $f_{n_k}$ converges to $f$ a.e. on $E$. Then since $E \subset \mathbb{R}^d$, $\lvert E \rvert < \infty$, and also $f_{n_k}$ are measurable since $f_n$ are measurable, we could apply the Egorov's Theorem here. That is there exists $A$ such that $\lvert A \rvert < \varepsilon$ and $f_{n_k}$ converges uniformly to $f$ on $E-A$.
+    \end{proof}
+\end{answer}

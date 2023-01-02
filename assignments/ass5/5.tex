@@ -1,0 +1,45 @@
+\section{Question 5}
+
+\begin{question}
+    In this question the conclusions can be obtained by applying results about pointwise limits of measurable functions.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Let $f: \mathbb{R} \rightarrow \mathbb{C}$ be a measurable function for which the derivative of $f$ exists a.e. on $\mathbb{R}$. Prove that $f^{\prime}$ is measurable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since the derivative of $f$ exists a.e., then $f'(x) = \lim_{n \to \infty}\tfrac{f(x+\frac{1}{n}) - f(x)}{\frac{1}{n}} \defeq \lim_{n \to \infty}f_n(x)$, for a.e. $x \in E$. Because $f$ is measurable, then $f_n$ is measurable for all $n$. Then, we can conclude that $f_n$ converges pointwise a.e. to $f'$ and $f'$ is measurable.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    For a given function $f: \mathbb{R} \rightarrow \mathbb{R}$ denote the functions
+    $$
+    \phi_f^{(n)}(x):=\sum_{k \in \mathbb{Z}} f\left(\frac{k}{n}\right) \mathbb{1}_{\left[\frac{k}{n}, \frac{k+1}{n}\right)} .
+    $$
+    Use the functions $\phi_f^{(n)}(x)$ to show that if $f$ is continuous a.e. on $\mathbb{R}$ then it is measurable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $a \in \mathbb{R}$, then
+        \begin{equation}
+            \{\phi_f^{(n)} > a\} = \bigcup_{i} [\tfrac{m_i}{n},\tfrac{m_i+1}{n}), \text{ such that $f{\tfrac{m_1}{n}} > a$}
+        \end{equation}
+        Hence it is a countable union of measure, which is therefore measurable. Hence, $\phi_{f}^{(n)}$ is measurable for all $n$.
+        
+        Let $Z \subset \mathbb{R}$ and $\lvert Z \rvert = 0$, then we claim that $f$ is continuous on $\mathbb{R}-Z$. Let $\varepsilon > 0$. Then, let $x \in \mathbb{R} - Z$, we could find $\{\tfrac{k_n}{n}\}_n$ such that $\lim_{n \to \infty}\tfrac{k_n}{n} = x$. Because $f$ is continuous at $x$, there exists $N \in \mathbb{N}$ such that $\lvert f(\tfrac{k_n}{n}) - f(x) \rvert < \varepsilon$ for $n > N$. Now using the same $N$ and $\varepsilon$, we have for $n > N$,
+        \begin{equation}
+            \lvert \phi_f^{(n)}(x) - f(x) \rvert = \lvert f(\tfrac{k_n}{n}) - f(x) \rvert < \varepsilon
+        \end{equation}
+        Hence, $\phi_f^{(n)} \to f$ a.e., and $f = \lim_{n \to \infty}\phi_f^{(n)}$ for $x$ a.e..
+        
+        Thus, $f$ is measurable.
+    \end{proof}
+\end{answer}

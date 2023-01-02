@@ -1,0 +1,19 @@
+\section{Question 4}
+
+\begin{question}
+    Let $A \subset[0,1]$. Prove that $A$ is measurable if and only if
+    $$
+    |A|_e+|[0,1]-A|_e=1
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        ($\Rightarrow$): By Carathéodory Criterion, if $A$ is measurable, then since $[0,1] \subset \mathbb{R}$, then we have:
+        \begin{equation}
+            \lvert [0,1] \rvert_e = \lvert [0,1]\cap A \rvert_e + \lvert [0,1] - A \rvert_e \Rightarrow 1 = \lvert A \rvert_e + \lvert [0,1] - A\rvert
+        \end{equation}
+        
+        ($\Leftarrow$): Assume $\lvert A \rvert_e + \lvert [0,1] - A \rvert_e = 1$. By Question 2 Part iv, we know that $\lvert A \rvert_i + \rvert [0,1] - A \rvert_e = \lvert [0,1] \rvert = 1$. Hence, $\lvert A \rvert_e + \lvert [0,1] - A \rvert_e = \lvert A \rvert_i + \rvert [0,1] - A \rvert_e \Rightarrow \lvert A \rvert_e = \lvert A \rvert_i$ since $\lvert [0,1] - A \rvert_e < \infty$. Now, by Question 2 Part ii, we know that $A$ is measurable since $\lvert A \rvert_e \leq \lvert [0,1] \rvert = 1 < \infty$ and $\lvert A \rvert_i = \lvert A \rvert_e$.
+    \end{proof}
+\end{answer}

@@ -1,0 +1,68 @@
+\section{Question 3}
+
+\subsection{Part i}
+
+\begin{question}
+    Assume $E \subseteq \mathbb{R}$ and $f: E \mapsto[0, \infty)$ are measurable, and $\int_E f<\infty$. Prove that
+    $$
+    \sum_{n=1}^{\infty}|\{x: f(x) \geq n\}|<\infty .
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Notice that $\sum_{n=1}^{\infty} \mathbb{1}_{\{f \geq n\}}(x) \leq f(x)$ for all $x\in E$ since for each $x_0$ such that $n_0 \leq f(x_0) < n_0+1$, $\sum_{n=1}^{\infty} \mathbb{1}_{\{f \geq n\}}(x_0) = n_0 \leq f(x_0)$.
+        
+        Therefore, since for all $n$, $\mathbb{1}_{\{f \geq n\}}$ is a nonnegative simple function, and $f$ is a nonnegatice measurable function, we know that
+        \begin{equation}
+            \int_{E} \sum_{n=1}^{\infty} \mathbb{1}_{\{f \geq n\}}(x) \,dx = \sum_{n=1}^{\infty} \int_E\mathbb{1}_{\{f \geq n\}}(x) \,dx = \sum_{n=1}^{\infty} \lvert {\{f \geq n\}} \rvert < \int_E f(x) \,dx < \infty
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Assume that a function $f$ is integrable over $\mathbb{R}$ and define,
+    $$
+    F(w)=\int_{\mathbb{R}} f(t) \sin (w t) d t, \quad w \in \mathbb{R} .
+    $$
+    Prove that $F$ is continuous over $\mathbb{R}$, and that if $t f(t)$ is integrable over $\mathbb{R}$ then $F$ is differentiable over $\mathbb{R}$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $v \in \mathbb{R}$, and there exists $\{v_n\}_n$ such that $v_n \to v$. Now, let $g_n(t) = f(t)\sin(v_nt)$, then $g(t) = f(t)\sin(vt) = \lim_{n \to \infty} g_n$. Notice that since $\sin(v_nt) \leq 1$, then $\lvert g_n \rvert \leq f$, so by D.C.T., we know that
+        \begin{equation}
+            \lim_{n\to \infty} F(v_n) = \lim_{n\to\infty}\int_{\mathbb{R}} g_n = \int_{\mathbb{R}} \lim_{n\to \infty} g_n = \int_{\mathbb{R}} g = F(v)
+        \end{equation}
+        Thus, $F$ is continuous over $\mathbb{R}$.
+        
+        For the proof of differentiable, we want to show:$\lim_{n \to \infty} \tfrac{F(v) - F(v_n)}{v - v_n}$ exists. Indeed, since
+        \begin{equation}
+            \begin{aligned}
+                    \lim_{n \to \infty} \tfrac{F(v) - F(v_n)}{v - v_n} =& \tfrac{\int_{\mathbb{R}} f(t) \sin (v t) d t - \int_{\mathbb{R}} f(t) \sin (v_n t) d t}{v - v_n}\\
+                    =& \tfrac{\int_{\mathbb{R}} f(t) \sin (v t) - f(t) \sin (v_n t)d t}{v - v_n}\\
+                    =& \int_{\mathbb{R}} f(t) \tfrac{\sin(vt) - \sin(v_nt)}{v - v_n} \,dt\\
+                    =& \int_{\mathbb{R}} f(t) \tfrac{d}{dw} \left(\sin(wt)\right) dt\\
+                    =& \int_{\mathbb{R}} tf(t) \cos(wt) \,dt
+            \end{aligned}
+        \end{equation}
+        Then, because $\lvert tf(t)\cos(wt)\rvert \leq tf(t)$, and $tf(t)$ is integrable, by D.C.T., we know that $tf(t)\cos(wt)$ is integrable. Thus, $\int_{\mathbb{R}} tf(t) \cos(wt) \,dt$ exists, i.e. F(x) is differnetiable.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Let $E$ be a measurable subset of $\mathbb{R}^d$ such that $|E|<\infty$, and let $f$ be a nonnegative, bounded function on $E$. Prove that $\mathrm{f}$ is measurable if and only if
+    $$
+    \sup \left\{\int_E \phi: 0 \leq \phi \leq f, \phi \text { simple }\right\}=\inf \left\{\int_E \psi: f \leq \psi, \psi \text { simple }\right\}
+    $$
+\end{question}
+
+\begin{answer}
+   \begin{proof}
+            
+   \end{proof}
+\end{answer}

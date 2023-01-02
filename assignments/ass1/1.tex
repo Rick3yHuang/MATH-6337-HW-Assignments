@@ -1,0 +1,83 @@
+\section{Question 1}
+
+\begin{question}
+    Prove Holder's and Minkowski's inequalities for continuous functions: Let $1 \leq p, q<\infty$ be such that $\frac{1}{p}+\frac{1}{q}=1$. Then for every two continuous functions $f$ and $g$ defined over the interval $[0,1]$ we have
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    \begin{equation}
+        \int_0^1|f(x) g(x)| d x \leq\left(\int_0^1|f(x)|^p\right)^{\frac{1}{p}}\left(\int_0^1|g(x)|^q\right)^{\frac{1}{q}}
+    \end{equation}
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Case a: If we have $(\int_0^1\lvert f(x) \rvert^p \, dx)^{\frac{1}{p}} = (\int_0^1\lvert f(x) \rvert^p \, dx)^{\frac{1}{p}} = 1$. Then by the Young's Inequality, we have 
+        \begin{equation}
+            \begin{aligned}
+                \int_0^1 \lvert f(x)g(x) \rvert \,dx &\leq \int_0^1 \tfrac{\lvert f(x) \rvert^p}{p} + \tfrac{\lvert g(x) \rvert^q}{q} \,dx\\
+                &= \int_0^1 \tfrac{\lvert f(x) \rvert^p}{p} \,dx + \int_0^1 \tfrac{\lvert g(x) \rvert^q}{q} \,dx\\
+                &= \tfrac{1}{p}\int_0^1 \lvert f(x) \rvert^p \, dx + \tfrac{1}{q}\int_0^1\lvert g(x) \rvert^q \,dx\\
+                &= \tfrac{1}{p} + \tfrac{1}{q}\\
+                &= 1\\
+                &= \left(\int_0^1\lvert f(x) \rvert^p \, dx\right)^{\frac{1}{p}}\left(\int_0^1\lvert f(x) \rvert^p \, dx\right)^{\frac{1}{p}}
+            \end{aligned}
+        \end{equation}
+        
+        Then, look at the general case, let $a(x) = \tfrac{f(x)}{(\int_0^;1\lvert f(x) \rvert^p \, dx)^{\frac{1}{p}}}$ and $b(x) = \tfrac{g(x)}{(\int_0^;1\lvert g(x) \rvert^q \, dx)^{\frac{1}{q}}}$. Then, we know
+        \begin{equation}
+            \begin{aligned}
+                \left(\int_0^1 \lvert a(x) \rvert^p \, dx\right)^{\frac{1}{p}} &= \left(\int_0^1 \tfrac{\lvert f(x) \rvert^p}{\int_0^1 \lvert f(x) \rvert^p \,dx}\,dx\right)^{\frac{1}{p}} \text{ (since $\int_0^1 \lvert f(x) \rvert^p \,dx$ is just a number)}\\
+                &= \left(\tfrac{1}{\int_0^1\lvert f(x) \rvert^p \,dx}\int_0^1 \lvert f(x) \rvert^p \,dx\right)^{\frac{1}{p}}\\
+                &= 1
+            \end{aligned}
+        \end{equation}
+        Similarly, we know that $(\int_0^1 \lvert b(x) \rvert^q \, dx)^{\frac{1}{q}} = 1$. Therefore, $\int_0^1 \lvert a(x) \rvert^p \, dx= \int_0^1 \lvert b(x) \rvert^q \, dx = 1$. This satisfies the condition of the case a. Then, we know that
+        \begin{equation}
+            \int_0^1 \lvert a(x)b(x) \rvert \,dx \leq \left(\int_0^1 \lvert a(x) \rvert^p \, dx\right)^{\frac{1}{p}} \left(\int_0^1 \lvert b(x) \rvert^q \, dx\right)^{\frac{1}{q}} = 1
+        \end{equation}
+        
+        Thus,
+        \begin{equation}
+            \begin{aligned}
+                &\int_0^1 \lvert a(x)b(x) \rvert \,dx \leq 1\\
+                \Rightarrow & \int_0^1\tfrac{f(x)g(x)}{(\int_0^1\lvert f(x) \rvert^p \, dx)^{\frac{1}{p}}(\int_0^1\lvert g(x) \rvert^q \, dx)^{\frac{1}{q}}} \,dx\leq 1\\
+                \Rightarrow & \int_0^1 f(x)g(x) \;dx \leq \left(\int_0^1\lvert f(x) \rvert^p \, dx\right)^{\frac{1}{p}}\left(\int_0^1\lvert g(x) \rvert^q \, dx\right)^{\frac{1}{q}}\\
+                &\text{ (since $\left(\int_0^1\lvert f(x) \rvert^p \, dx\right)^{\frac{1}{p}}\left(\int_0^1\lvert g(x) \rvert^q \, dx\right)^{\frac{1}{q}}$ is just a positive number)}
+            \end{aligned}
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    \begin{equation}
+        \left(\int_0^1|f(x)+g(x)|^p\right)^{\frac{1}{p}} \leq\left(\int_0^1|f(x)|^p\right)^{\frac{1}{p}}+\left(\int_0^1|g(x)|^p\right)^{\frac{1}{p}}
+    \end{equation}
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        \begin{equation}
+            \begin{aligned}
+                \int_0^1 \lvert f(x) + g(x) \rvert^p \,dx &= \int_0^1 \lvert f(x)+g(x) \lvert f(x) + g(x) \rvert^{p-1} \,dx\\
+                &\leq \int_0^1 f(x)\lvert f(x) + g(x) \rvert^{p-1} \,dx + \int_0^1g(x)\lvert f(x) + g(x) \rvert^{p-1}\,dx\\
+                &\text{ (by $\Delta$-ineq)}\\
+                &\leq \left(\int_0^1\lvert f(x) \rvert^p \,dx\right)^{\frac{1}{p}}\left(\int_0^1\lvert f(x)+g(x) \rvert^{q(p-1)}\right)^{\frac{1}{q}} + \left(\int_0^1\lvert g(x) \rvert^p \,dx\right)^{\frac{1}{p}}\left(\int_0^1\lvert f(x)+g(x) \rvert^{q(p-1)}\right)^{\frac{1}{q}}\\
+                &\text{ (by Part i)}\\
+                &= (\lvert\lvert f(x)\rvert\rvert_p + \lvert\lvert g(x) \rvert\rvert_p)\left(\int_0^1\lvert f(x)+g(x) \rvert^p\right)^{\frac{1}{q}}\\
+                &\text{ (since $\tfrac{1}{p}+\tfrac{1}{q} = 1 \Rightarrow \tfrac{1}{q} = \tfrac{p-1}{p} \Rightarrow p = q(p-1)$)}
+            \end{aligned}
+        \end{equation}
+        Next, dividing both sides of the equation by $(\int_0^1\lvert f(x)+g(x) \rvert^p)^{\frac{1}{q}}$, we have
+        \begin{equation}
+            \begin{aligned}
+                &\left(\int_0^1\lvert f(x)+g(x) \rvert^p\right)^{1-\frac{1}{q}} \leq \lvert\lvert f(x)\rvert\rvert_p + \lvert\lvert g(x) \rvert\rvert_p\\
+                \Rightarrow &\left(\int_0^1\lvert f(x)+g(x) \rvert^p\right)^{\frac{1}{p}} \leq \left(\int_0^1\lvert f(x)\rvert^p\right)^{\frac{1}{p}}+\left(\int_0^1\lvert g(x)\rvert^p\right)^{\frac{1}{p}}
+            \end{aligned}
+        \end{equation}
+    \end{proof}
+\end{answer}

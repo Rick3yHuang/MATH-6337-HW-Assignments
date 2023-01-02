@@ -1,0 +1,72 @@
+\section{Question 4}
+
+\begin{question}
+    Solve problem $4.2 .17$ on page 132 of the textbook.
+\end{question}
+
+\subsection{Problem 4.2.17}
+
+\begin{question}
+    Let $f: E \rightarrow[0, \infty]$ be a nonnegative, measurable function defined on a measurable set $E \subseteq \mathbb{R}^d$. This problem will quantify the idea that the integral of $f$ equals "the area of the region under its graph."
+\end{question}
+
+\subsubsection{Part a}
+
+\begin{question}
+    The graph of $f$ is
+    $$
+    \Gamma_f=\{(x, f(x)): x \in E, f(x)<\infty\} .
+    $$
+    Show that $\left|\Gamma_f\right|=0$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Define $I_k = [k,k+1]$ for $k = 0,1,2,\cdots$. Then for each $k$, we will show $\lvert \Gamma_f \cap E \times I_k \rvert = 0$. Let $a \in \mathbb{Z}^+$, and $J_m = \left[k+\tfrac{m}{a},k+\tfrac{m+1}{a}\right]$ for $m = 0,1,2,\cdots a-1$. Then,
+        \begin{equation}
+            \begin{aligned}
+                \lvert \Gamma_f \cap E \times I_k \rvert =& \left \lvert \bigcup_{m=0}^{a-1} \Gamma_f \cap E \times J_m\right \rvert\\
+                =& \left \lvert \bigcup_{m=0}^{a-1} f^{-1}(J_m) \times J_m\right \rvert\\
+                =& \left \lvert \bigcup_{m=0}^{a-1} \tfrac{1}{a} \cdot f^{-1}(J_m)\right \rvert\\
+                =& \left \lvert \tfrac{1}{a} \sum_{m = 1}^{a-1} \cdot f^{-1}(J_m)\right \rvert\\
+                =& \left \lvert \tfrac{1}{a} \cdot I_k \right\rvert =  \tfrac{1}{a} \cdot \lvert I_k \rvert 
+            \end{aligned}
+        \end{equation}
+        Then, when we take $a$ arbitrarily large, we would show that $\lvert \Gamma_f \cap E \times I_k \rvert = 0$. Thus,
+        \begin{equation}
+            \lvert \Gamma_f \rvert = \bigcap_{k=1}^{\infty}\lvert \Gamma_f \cap E \times I_k \rvert = 0.
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part b}
+
+\begin{question}
+    The region under the graph of $f$ is the set $R_f$ that consists of all points $(x, y) \in \mathbb{R}^{d+1}=\mathbb{R}^d \times \mathbb{R}$ such that $x \in E$ and $y$ satisfies
+    $$
+    \begin{cases}0 \leq y \leq f(x), & \text { if } f(x)<\infty, \\ 0 \leq y<\infty, & \text { if } f(x)=\infty .\end{cases}
+    $$
+    Show that $R_f$ is a measurable subset of $\mathbb{R}^{d+1}$, and its Lebesgue measure is
+    $$
+    \left|R_f\right|=\int_E f(x) d x .
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Because $f$ is a measurable function then there exists a collection of nonnegative simple function $\phi_k$, such that $\phi_k \nearrow f$. Then, we know that
+        \begin{equation}
+            \lim_{k \to \infty} \int_{E} \phi_k = \int_{E}f
+        \end{equation}
+        Also, notice that 
+        \begin{equation}
+            \int_E \phi_k = \sum_{m=1}^{n} c_{k,m} \cdot  \lvert E_{k,m}\rvert = \left \lvert \bigcup_{m=1}^{n} \phi_k^{-1}(c_{k,m}) \times \{c_{k,m}\} \right\rvert = \lvert R_{\phi_k} \rvert
+        \end{equation}
+        since $c_{k,m}$ for $m = 1,\cdots, n$ includes all values of $\phi_k(x)$ for $x \in E$, since $\phi_k$ is simple.
+        
+        Similarly, we could find simple functions $\psi_k$ such that $\psi_k \searrow f$ and $\psi_k(x) - \phi_k(x) < \tfrac{1}{k}$ a.e.. Therefore, $\lvert R_{\psi_k} - R_{\phi_k} \rvert < \tfrac{1}{k}\cdot \lvert E \rvert$. Therefore, 
+        \begin{equation}
+            \lvert R_f \rvert = \lim_{k\to \infty} \lvert R_{\phi_k} \rvert = \lim_{k \to \infty} \lvert R_{\psi_k} \rvert = \lim_{k \to \infty} \int_{E} \phi_k = \int_{E}f.
+        \end{equation}
+    \end{proof}
+\end{answer}

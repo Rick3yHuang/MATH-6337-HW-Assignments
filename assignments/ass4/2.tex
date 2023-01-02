@@ -1,0 +1,75 @@
+\section{Question 2}
+
+\begin{question}
+    Define the inner Lebesgue measure of a set $A \subseteq \mathbb{R}^d$ to be
+    $$
+    |A|_i=\sup \{|F|: F \text { is closed and } F \subseteq A\}
+    $$
+    Prove the following statements.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    If $A$ is Lebesgue measurable then $|A|_i=|A|_e=|A|$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Because if $A$ is Lebesgue measurable, then $\lvert A \rvert = \lvert A \rvert_e$, we only need to show $\lvert A \rvert = \lvert A \rvert_i$. Let $\varepsilon > 0$, since $F \subseteq A$, we have $A^c \subseteq F^c$. Because $F$ is closed, then $F^c$ is open. Then, since $A^c \in \mathcal{L}(\mathbb{R}^d)$, $\exists U$ open such that $\lvert U - A^c \rvert < \varepsilon$. Because $A^c \subseteq U$, then there exist $F_i^c = U$. Therefore, $\lvert F_i^c - A^c \rvert < \varepsilon$. Hence,
+        \begin{equation}
+            \lvert F_i^c - A^c \rvert = \lvert F_i^c \cap A \rvert = \lvert A \cap F_i^c \rvert = \lvert A - F_i \rvert < \varepsilon.
+        \end{equation}
+        Hence, we have $\lvert A \rvert - \lvert F_i \rvert < \varepsilon$. Then $\lvert A \rvert  = \lvert F_i \rvert$. Since $\lvert U \rvert = \inf_{(A^c \subseteq F^c \text{ open})} \lvert F^c \rvert$, $\lvert U^c \rvert = \lvert F_i \rvert = \lvert A \rvert = \sup_{(A^c \subseteq F^c \text{ open})} \lvert F \rvert = \lvert A \rvert_i$. Hence, $\lvert A \rvert_i = \lvert A \rvert_e = \lvert A \rvert$. Also, if $\lvert A \rvert_i = \infty$, we know that $\sup_{F \subseteq A}\lvert F \rvert = \infty$, which means $F_i = \infty = \lvert A \rvert$. Hence, we also have $\lvert A \rvert_i = \lvert A \rvert_e = \lvert A \rvert$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    If $|A|_e<\infty$ and $|A|_e=|A|_i$ then $A$ is Lebesgue measurable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $\varepsilon > 0$, there exists an open set $U$ such that $A \subset U$ and $\lvert U \rvert < \lvert A \rvert_e + \tfrac{\varepsilon}{2}$, and there exists an closed set $F$ such that $\lvert F \rvert + \tfrac{\varepsilon}{2}> \lvert A \rvert_i \Leftrightarrow \lvert F \rvert > \lvert A \rvert_i - \tfrac{\varepsilon}{2}$. Then, since $U - A \subset U - F$, we have
+        \begin{equation}
+            \begin{aligned}
+                \lvert U - A \rvert_e &< \lvert U - F \rvert = \lvert U \rvert - \lvert F \rvert \text{ (since $F\subset U$ measurable)}\\
+                &< \lvert A \rvert_e + \tfrac{\varepsilon}{2} - (\lvert A \rvert_i - \tfrac{\varepsilon}{2}) = \lvert A \rvert_e - \lvert A \rvert_i + \varepsilon = \varepsilon \text{ (by assumption)}.
+            \end{aligned}
+        \end{equation}
+        Therefore, there exists an open set $U$ such that $\lvert U - A \rvert_e < \varepsilon$, so that $A$ is Lebesgue measurable.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   There exists a nonmeasurable set $A$ that satisfies $|A|_e=|A|_i=\infty$. (You may assume that nonmeasurable sets exist; this will be proved in class next week).
+\end{question}
+
+\begin{answer}
+    Since we know that there exists a nonmeasurable set $F \subset [0,1]$, then $A = (-\infty,0) \cup F \cup (1,\infty)$ is also nonmeasurable. However, $\lvert A \rvert_e = \lvert A \rvert_i = \infty$.
+\end{answer}
+
+\subsection{Part iv}
+
+\begin{question}
+   If $E \subseteq \mathbb{R}^d$ is Lebesgue measurable and $A \subseteq E$, then
+    $$
+    |E|=|A|_i+|E-A|_e
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        ($\lvert E \rvert \geq \lvert A \rvert_i + \lvert E - A \rvert_e$): Let $\varepsilon > 0$, then there exist a closed set $F \subset A$, such that $\lvert F \rvert > \lvert A \rvert_i - \varepsilon$. Then, we have:
+        \begin{equation}
+            \lvert E - A \rvert_e < \lvert E - F \rvert = \lvert E \rvert - \lvert F \rvert < \lvert E \rvert - \lvert A \rvert_i + \varepsilon
+        \end{equation}
+        Because this works for all $\varepsilon$, we know that $\lvert E - A \rvert_e \leq \lvert E \rvert - \lvert A \rvert_i \Leftrightarrow \lvert E - A \rvert_e + \lvert A \rvert_i \leq \lvert E \rvert$.
+        
+        ($\lvert E \rvert \leq \lvert A \rvert_i + \lvert E - A \rvert_e$): Let $\varepsilon > 0$, then there exist a closed set $F$ as defined above. Also, there exists an open set $U \supset E - A$ such that $\lvert U \rvert < \lvert E - A \rvert_e + \varepsilon$. Then $E-U \subset A$, then $\lvert A \rvert_i \geq \lvert E - U \rvert = \lvert E \rvert - \lvert U \rvert > \lvert E \rvert - \lvert E - A \rvert_e - \varepsilon$. Since we picked $\varepsilon$ arbitrarily, we know that $\lvert A \rvert_i \geq \lvert E \rvert - \lvert E - A \rvert_e \Leftrightarrow \lvert A \rvert_i + \lvert E - A \rvert_e \geq \lvert E \rvert$.
+    \end{proof}
+\end{answer}

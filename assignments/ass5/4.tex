@@ -1,0 +1,37 @@
+\section{Question 4}
+
+\begin{question}
+    Assume that $f: \mathbb{R}^d \rightarrow \mathbb{R}$ is a measurable function and denote $\Sigma:=\left\{B \subset \mathbb{R}: B\right.$ is measurable and $f^{-1}(B)$ is measurable $\}$.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Prove that $\Sigma$ is a sigma algebra of subsets of $\mathbb{R}$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First, since $f$ is a real-value measurable function, then $f^{-1}(U)$ is measurable for all open sets $U \subset \mathbb{R}$. Hence, $\Sigma$ is not empty since it contains the open sets.
+        
+        Second, if we have a countable collection of measurable sets $\{B_i\}_i \subset \Sigma$. Then $\bigcup_{i \in \mathbb{N}} B_i$ is measurable since $\mathcal{L}$ is a $\sigma$-algebra. Because each $B_i \in \Sigma$, we have $f^{-1}(B_i)$ is measurable. Then
+        \begin{equation}\label{eqn:eqn5}
+            f^{-1}\left(\bigcup_{i \in \mathbb{N}}B_i\right) = \bigcup_{i \in \mathbb{N}}f^{-1}(B_i)
+        \end{equation}
+        Again, by the closure of $\sigma$-algebra of $\mathcal{L}$, we know that the equation \ref{eqn:eqn5} is measurable. Hence $\bigcup_{i \in \mathbb{N}}B_i \in \Sigma$.
+        
+        Third, Let $B \in \Sigma$, then we know that $B^c$ is measurable because $B$ is measurable and the complement of measurable set is measurable. $f^{-1}(B^c) = \mathbb{R}^d - f^{-1}(B)$. Because both $\mathbb{R}^d$ and $f^{-1}(B)$ are measurable, $f^{-1}(B^c)$ is measurable since $\mathcal{L}(\mathbb{R}^d)$ is a $\sigma$-algebra.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    If $B$ denotes the Borel Sigma algebra of subsets of $\mathbb{R}$, prove that $B \subseteq \Sigma$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        If $B = \{U_i\}_i$ be the set of all open sets in $\mathbb{R}$, then we need to have $U_i^c$ also in $B$, but $U_i^c$ are closed. Hence, if we add them to the set $\{U_i\}_i$, we claim $B = \{U_i\} \cup \{U_i^c\}$, which contains every open sets and their complements in $\mathbb{R}$. This is obviously nonempty, and it is closed under countable union, since $\bigcup_{i}U_i$ is open therefore in $B$, $\bigcup_{i}U_i^c = (\bigcap_{i}U_i)^c$ is the complement of some open set $\bigcap_{i}U_i$, therefore in $B$, and $\bigcup_{i}U_i\cup\bigcup_{i}U_i^c = \mathbb{R} \in B$. Also, it is closed under taking the complements by construction. Since open sets $U_i \in \Sigma$ as shown in the part i, and $U_i^c \in \Sigma$ for all $i$ because $\Sigma$ is a $\sigma$-algebra. Therefore, $B \subseteq \Sigma$ since $B = \{U_i\}_i \cup \{U_i^c\}_i$.
+    \end{proof}
+\end{answer}

@@ -1,0 +1,29 @@
+\section{Question 3}
+
+\begin{question}
+    [15 points] Let $S$ be the set of all nonnegative measurable functions on $[0, \infty)$ that satisfy
+    $$
+    \int_0^{\infty}[f(x)]^4 d x \leq 1
+    $$
+    Find
+    $$
+    \sup _{f \in S} \int_0^{\infty}[f(x)]^3 e^{-x} d x
+    $$
+\end{question}
+
+\begin{answer}
+    Using the Hölder's Inequality, we have for $f \in S$:
+    \begin{equation}
+        \begin{aligned}
+            \int_0^{\infty} [f(x)]^3 e^{-x} \,dx = & \int_0^{\infty} \lvert [f(x)]^3e^{-x} \rvert \,dx\\
+            \leq &\left(\int_0^{\infty}([f(x)]^3)^{\frac{4}{3}}\right)^{\frac{3}{4}}\left(\int_0^{\infty}(e^{-x})^4\right)^{\frac{1}{4}}\\
+            = &\left(\int_0^{\infty}[f(x)]^4\right)^{\frac{3}{4}}\left(\int_0^{\infty}e^{-4x}\right)^{\frac{1}{4}}\\
+            \leq &1^{\frac{3}{4}} \cdot \left(\tfrac{1}{4}\right)^{\frac{1}{4}} = \sqrt{\tfrac{1}{2}} = \tfrac{\sqrt{2}}{2}
+        \end{aligned}
+    \end{equation}
+    Then, if we could show that there exists some $f(x) \in S$ such that $\int_0^{\infty} [f(x)]^3 e^{-x} \,dx = \tfrac{\sqrt{2}}{2}$, then $\sup_{f \in S} \int_0^{\infty} [f(x)]^3 e^{-x} \,dx = \tfrac{\sqrt{2}}{2}$. We could find such $f(x)$ by setting $[f(x)]^3e^{-x} = 2\sqrt{2} e^{-4x}$, since $\int_0^{\infty}2\sqrt{2}e^{-4x} \,dx = 2\sqrt{2}\int_0^{\infty}e^{-4x} = 2\sqrt{2} \cdot \tfrac{1}{4} = \tfrac{\sqrt{2}}{2}$. Hence, $[f(x)]^3 = 2\sqrt{2}e^{-3x} \Leftrightarrow f(x) = \sqrt{2}e^{-x}$. Then, it suffices to show that $\sqrt{2}e^{-x} \in S$. Indeed, since
+    \begin{equation}
+        \int_0^{\infty} [f(x)]^4\,dx = \int_0^{\infty} 4e^{-4x} \,dx = 4\cdot \tfrac{1}{4} = 1 \leq 1,
+    \end{equation}
+    then $f(x) = 2\sqrt{2}e^{-x} \in S$. Hence, $\sup_{f \in S} \int_0^{\infty}[f(x)]^3 e^{-x} \,dx = \tfrac{\sqrt{2}}{2}$.
+\end{answer}

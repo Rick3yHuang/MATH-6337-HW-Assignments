@@ -1,0 +1,32 @@
+\section{Question 2}
+
+\begin{question}
+    [15 points] Let $E$ be the set of all $x \in \mathbb{R}$ for which there exist infinitely many fractions $p / q, p, q \in \mathbb{Z}$, such that
+    $$
+    \left|x-\frac{p}{q}\right|<\frac{1}{q^3}
+    $$
+    Prove that $|E|=0$.
+    (Remark. Interesting fact, for general knowledge: For each irrational number $x$, it can be shown that there exist infinitely many fractions $p / q$ with $p$ and $q$ relatively prime such that $|x-p / q|<1 / q^2$.)
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Define 
+        \begin{equation}
+            E_i = \left\{x \in [i,i+1] \mid \lvert x - \tfrac{p}{q} \rvert < \tfrac{1}{q^3} \text{ for infinitely many fractions }\tfrac{p}{q}, p,q \in \mathbb{Z}\right\},
+        \end{equation}
+        Now, let
+        \begin{equation}
+            E_{ipq} = \left\{x \in [i,i+1] \mid \lvert x - \tfrac{p}{q} \rvert < \tfrac{1}{q^3}\right\}
+        \end{equation}
+        Notice that $\lvert E_{ipq} \rvert \leq \tfrac{2}{q^3}$ since $E_{ipq} \subseteq (\tfrac{p}{q} - \tfrac{1}{q^3}, \tfrac{p}{q} + \tfrac{1}{q^3})$. Since $\mathbb{Q}$ is countable, then there are countable infinite $q$. if we take the infinite sum, we have:
+        \begin{equation}
+                \sum_{q=1}^{\infty}\sum_{p=0}^{q} \lvert E_{ipq}\rvert \leq \sum_{q=1}^{\infty}\sum_{p=0}^{q}\tfrac{2}{q^3} = \sum_{q = 1}^{\infty} \tfrac{2(q+1)}{q^3} \leq 2\sum_{q=1}^{\infty}\tfrac{q+1}{q^3} = 2 \sum_{q=1}^{\infty} \left(\tfrac{1}{q^2} + \tfrac{1}{q^3}\right) < \infty,
+        \end{equation}
+        by the $p$-series test.
+        
+        Then, we could apply the Borel-Cantelli Lemma here, since $E_{ipq} \subset \mathbb{R}^d$ and $\sum_{q=1}^{\infty}\sum_{p=0}^{q} \lvert E_{ipq}\rvert < \infty$, we could conclude that $\lvert \limsup E_{ipq} \rvert = 0$, i.e. $\lvert E_i \rvert = 0$, since $\limsup E_{ipq}$ consists of those points $x \in \mathbb{R}^d$ that belong to infinitely many of the $E_{ipq}$, which is exactly the elements of $E_i$.
+        
+        Finally, since $E = \bigcup_{i = -\infty}^{\infty} E_i$, then $\lvert E \rvert \leq \sum_{-\infty}^{\infty} \lvert E \rvert = 0$. Hence, $\lvert E \rvert = 0$.
+    \end{proof}
+\end{answer}

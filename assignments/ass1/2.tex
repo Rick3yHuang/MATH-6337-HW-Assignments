@@ -1,0 +1,75 @@
+\section{Question 2}
+
+\begin{question}
+    Let $1 \leq p < q \leq \infty$
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Prove the inclusions $\ell^p \varsubsetneqq \ell^q$ and show that equalities do not hold.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $a = (a_1,a_2,a_3\cdots) \in \ell^p$, then we know that $\sum_{j=1}^{\infty}{\lvert a_j \rvert^p} < \infty$ by definition. Then, $\lvert\lvert a \rvert\rvert_p = (\sum_{j=1}^{\infty}{\lvert a_j \rvert^p})^{\frac{1}{p}} < \infty$.
+        
+        Then, let $x_j = \tfrac{a_j}{\lvert\lvert a \rvert\rvert_p}$ and $x = (x_1,x_2,x_3,\cdots)$. We know that $\lvert\lvert x \rvert\rvert_p = 1$. Thus, each $\lvert x_j \rvert \leq 1$ for all $j \in \{1,2,3,\cdots\}$. Therefore, $\lvert x_j \rvert^q \leq \lvert x_j \rvert^p$ for all $j \in \{1,2,3,\cdots\}$.
+        
+        Then, we have
+        \begin{equation}
+                \lvert\lvert x \rvert\rvert_q = \left(\sum_{j=1}^{\infty}{\lvert x_j \rvert^q}\right)^{\frac{1}{q}} \leq \left(\sum_{j=1}^{\infty}{\lvert x_j \rvert^p}\right)^{\frac{1}{q}} = \left(\left(\sum_{j=1}^{\infty}{\lvert x_j \rvert^p}\right)^{p}\right)^{\frac{q}{p}} = \left(\lvert\lvert x \rvert\rvert_p\right)^{\frac{q}{p}} = 1
+        \end{equation}
+        Hence, we know that
+        \begin{equation}
+                \lvert\lvert x \rvert\rvert_q = \dfrac{\left(\sum_{j=1}^{\infty}{\lvert a_j \rvert^q}\right)^{\frac{1}{q}}}{\lvert\lvert a \rvert\rvert_p} = \dfrac{\lvert\lvert a \rvert\rvert_q}{\lvert\lvert a \rvert\rvert_p}
+        \end{equation}
+        Thus, we have $\tfrac{\lvert\lvert a \rvert\rvert_q}{\lvert\lvert a \rvert\rvert_p} \leq 1$, which implies $\lvert\lvert a \rvert\rvert_q \leq \lvert\lvert a \rvert\rvert_p <\infty$. Hence $\sum_{j=1}^{\infty}{\lvert a_j \rvert^p} = (\lvert\lvert a \rvert\rvert_q)^q < \infty$. Thus, $a \in \ell^q$ so that $\ell^p \subseteq \ell^q$.
+        
+        By Part iii, since for $a_n = (a_1,a_2,a_3,\cdots)$ such that 
+        \begin{equation}
+            a_j =
+            \begin{cases}
+                1 & \text{if $0 < j \leq n$}\\
+                0 & \text{if $n < j$},
+            \end{cases}
+        \end{equation}
+        there is not such constant $C$ that $\lVert a \rVert_p \leq C \lVert a \rVert_q$, we know that $\lVert a \rVert_p$ is unbounded. Then, we know that there must be some $a_n \in \ell^q$ that is not in $\ell^p$. Therefore, $\ell^p \varsubsetneqq \ell^q$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Prove that for $a=\left\{a_n\right\} \in \ell^p$ we have $\|a\|_q \leq\|a\|_p$
+\end{question}
+
+\begin{answer}
+    From proof in Part i, we already proved $\lvert\lvert a \rvert\rvert_q \leq \lvert\lvert a \rvert\rvert_p$.
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Prove that there \textbf{does not} exist a constant $C$ so that for \textbf{all} $a=\left\{a_n\right\} \in$ $\ell^q$ we have $\|a\|_p \leq C\|a\|_q$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Suppose by contradiction that there exists a constant $C$ such that for all $a \in \ell^q$, we have $\lVert a \rVert_p \leq C \lVert a \rVert_q$. Then, we let $a_n = (a_1,a_2,a_3,\cdots)$ such that 
+        \begin{equation}
+            a_j =
+            \begin{cases}
+                1 & \text{if $0 < j \leq n$}\\
+                0 & \text{if $n < j$}
+            \end{cases}
+        \end{equation}
+        for some $0 \leq n < \infty$. Thus, we know that for all $n$, we have
+        \begin{equation}
+                    \lVert a_n \rVert_p \leq C \lVert a_n \rVert_q \Rightarrow C \geq \dfrac{\lVert a_n \rVert_p}{\lVert a_n \rVert_q}
+        \end{equation}
+        Then, in particular, we know that $C \geq \lim_{n \to \infty}{\tfrac{\lVert a_n \rVert_p}{\lVert a_n \rVert_q}} = \lim_{n \to \infty}{n^{\frac{1}{p} - \frac{1}{q}}} = \infty$. This is a contradiction since no such constant $C$ exists.
+        
+        Hence there is no constant $C$ such that for all $a \in \ell^q$, we have $\lVert a \rVert_p \leq C \lVert a \rVert_q$
+    \end{proof}
+\end{answer}

@@ -1,0 +1,49 @@
+\section{Question 3}
+
+\begin{question}
+    Let $E_j$ be a sequence of sets in $\mathbb{R}^d$. Denote
+    $$
+    E=\limsup _{j \rightarrow \infty} E_j:=\bigcap_{k=1}^{\infty} \bigcup_{j=k}^{\infty} E_j
+    $$
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Prove that $E$ consists of all points $x \in \mathbb{R}^d$ which belong to infinitely many sets $E_j$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $x \in E$, then $x \in \bigcap_{k=1}^{\infty} \bigcup_{j=k}^{\infty} E_j$. This means $x \in \bigcup_{j=k}^{\infty} E_j$ for all $k$. Then, since there are infinitely many unions, these unions give us infinitely many of $E_j$ containing $x$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Show that
+    $$
+    \limsup _{j \rightarrow \infty} \mathbb{1}_{E_j}(x)=\mathbb{1}_E(x),
+    $$
+    (where $\mathbb{1}_{E_j}(x)$ is the indicator function of $E_j$, that is, the function which satisfies $\mathbb{1}_{E_j}(x)=1$ if $x \in E_j$ and $\mathbb{1}_{E_j}(x)=0$ otherwise).
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        \begin{equation}
+        \limsup _{j \rightarrow \infty} \mathbb{1}_{E_j}(x)=\bigcap_{k=1}^{\infty} \bigcup_{j=k}^{\infty} \mathbb{1}_{E_j}(x)
+    \end{equation}
+    If $x \in E$, then $\limsup _{j \rightarrow \infty} \mathbb{1}_{E_j}(x) = 1$, since $E=\bigcap_{k=1}^{\infty} \bigcup_{j=k}^{\infty} E_j$. and $\limsup _{j \rightarrow \infty} \mathbb{1}_{E_j}(x) = 0$ otherwise.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Prove the Borel-Cantelli Lemma: If $\sum_j\left|E_j\right|_e<\infty$ then $|E|_e=0$.
+\end{question}
+
+\begin{answer}
+    
+\end{answer}

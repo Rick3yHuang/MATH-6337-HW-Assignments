@@ -1,0 +1,80 @@
+\section{Question 2}
+
+\begin{question}
+    The questions below can be solved by applying the density of continuous functions in $L^p$ (though there may be also other ways to solve them).
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Fix $1 \leq p<\infty$. Given $f \in L^p\left(\mathbb{R}^d\right)$, let $T_a f(x)=f(x-a)$ denote the translation of $f$ by $a \in \mathbb{R}^d$. Prove that $T_a f \rightarrow f$ in $L^p$-norm as $a \rightarrow 0$, i.e.,
+    $$
+    \lim _{a \rightarrow 0}\left\|T_a f-f\right\|_1=0 .
+    $$
+    (Remark: This is a very useful claim, I suggest to remember it as you remember theorems that were studied in class).
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        If $f$ is compactly supported function, then $T_af(x)$ is also a compactly supported function, then $T_af \to f$ as $a \to 0$ since the collection of all compactly supported function in $L^{p}(\mathbb{R}^d)$ is dense in $L^{p}(\mathbb{R}^d)$. 
+        
+        Otherwise, if $f$ is not compactly supported. Let $\varepsilon > 0$, we can find a compactly supported function $g$ such that $\lVert g - f \rVert_p < \tfrac{\varepsilon}{3}$. Also, we can conclude that $T_ag$ is also a compactly supported function. Then, by the proof in the first part, we know that $T_ag \to g$ as $a \to 0$. These, for $a$ small enough, we have $\lVert g - T_ag \rVert_p < \tfrac{\varepsilon}{3}$. Hence, by triangular inequality, we have:
+        \begin{equation}
+            \begin{aligned}
+                \lVert f - T_af \rVert_p \leq& \lVert f - g \rVert_p + \lVert g - T_ag \rVert_p + \lVert T_af - T_ag \rVert_p\\
+                = &2\lVert f - g \rVert_p + \lVert g - T_ag \rVert_p\\
+                &\text{ (by the translation invariant property of the Lebesgue measure)}\\
+                <& \tfrac{2\varepsilon}{3} + \tfrac{\varepsilon}{3} = \varepsilon
+            \end{aligned}
+        \end{equation}
+        Therefore, $T_af \to f$ as $a \to 0$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Let $E \subset \mathbb{R}$ be a set of finite measure. Prove that
+    $$
+    \lim _{h \rightarrow 0}|(E+h) \cap E|=|E|
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $\varepsilon > 0$. By Part i, we know that for $h$ small enough, we have $\lVert T_h \mathbb{1}_{E} - \mathbb{1}_E\rVert_1 < \varepsilon$. Therefore, we could have:
+        \begin{equation}
+            \begin{aligned}
+                \lvert E \cap (E+h) \rvert - \lvert E \rvert = &\int_E \mathbb{1}_{E+h}(x) \,dx - \int_E \mathbb{1}_E(x)\,dx\\
+                = &\int_E \mathbb{1}_{E}(x-h) - \mathbb{1}_E \,dx\\
+                = &\lVert T_h \mathbb{1}_E - \mathbb{1}_E \rVert_1 < \varepsilon
+            \end{aligned}
+        \end{equation}
+        Since, we choose $\varepsilon$ arbitrarily, we showed that $\lvert E \cap (E+h)\rvert = \lvert E \rvert$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+    Suppose that $f$ is a bounded, measurable function on $[0,1]$ such that
+    $$
+    \int_0^1 x^n f(x) d x=0, \quad \forall n=0,1,2, \ldots
+    $$
+    Show that $f(x)=0$ a.e..
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        By the Weierstrass theorem, we could use $P_n(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^6$ to approximate $f$ such that $\lVert f - P_n \rVert_{\infty} < \tfrac{1}{n}$ for all $n \in N$. Also, we could show that:
+        \begin{equation}
+            \int_0^1 f(x)P_n(x) \,dx = \int_0^1 f(x)(a_0+a_1x+\cdots+a_nx^n) \,dx = \sum_{k=1}^n \int_0^1 a_k \cdot x^kf(x) \,dx = \sum_{k=1}^n a_k \cdot \int_0^1 x^kf(x) \,dx = 0
+        \end{equation}
+        Then, we have
+        \begin{equation}
+            \left|\int_0^1 f(x) f(x) d x\right|=\left|\int_0^1 f(x) f(x) d x-\int_0^1 f(x) P_n(x)\right| \leq \int_0^1|f(x)|\left|f(x)-P_n(x)\right| d x
+            \leq \frac{1}{n} \int_0^1|f(x)| d x
+        \end{equation}
+        Also, we know that $\int_0^1 \lvert f(x) \rvert \,dx$ is a fix number, so that if we take $n$ small enough, we know that $\int_0^1 f^2 = 0$, which would implies that $f(x) = 0$ a.e., since otherwise, $f^2(x) \neq 0$ means $\int_0^1 f^2 \neq 0$.
+    \end{proof}
+\end{answer}

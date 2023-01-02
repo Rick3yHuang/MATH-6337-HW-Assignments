@@ -1,0 +1,43 @@
+\section{Question 4}
+
+\begin{question}
+    [15 points] Let $f:[a, b] \rightarrow \mathbb{R}$ be (Lebesgue) integrable, and $\epsilon>0$. Show there exist, a closed subset $F \subseteq[a, b]$ with $|[a, b]-F|<\epsilon$, and a sequence of polynomials $\left\{p_n\right\}$ such that
+    $$
+    \sup _{x \in F}\left|f(x)-p_n(x)\right| \rightarrow 0 \quad \text { as } n \rightarrow \infty
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $\varepsilon > 0$ and $\eta > 0$. Since $C_i[a,b]$ is dense in $L^1[a,b]$, then there exists $g: [a,b] \to \mathbb{R}$ which is continuous such that
+        \begin{equation}
+            \int_a^b \lvert f(x) - g(x) \rvert \,dx < \tfrac{\varepsilon \eta}{2}
+        \end{equation}
+        Then, by approximation using the Weierstrass Theorem, we know that there exists a sequence of polynomial functions $\{p_n\}_n$ such that
+        \begin{equation}
+            \sup_{x \in [a,b]} \lvert g(x) - p_n(x) \,dx \rvert < \tfrac{1}{(b-a)n}
+        \end{equation}
+        Then, there exists $\tfrac{2}{\varepsilon\eta} \leq N \in \mathbb{N}$ such that $\forall \, n > N$, we have
+        \begin{equation}
+            \int_a^b \lvert g(x) - p_n(x) \rvert \,dx \leq \tfrac{1}{(b-a)n} \int_a^b 1\,dx = \tfrac{b-a}{(b-a)n} = \tfrac{1}{n} < \tfrac{1}{N} \leq \tfrac{\varepsilon\eta}{2}
+        \end{equation}
+        Now by the triangular inequality of $L^1[a,b]$, we have for all $n > N$,
+        \begin{equation}
+            \int_a^b \lvert f(x) - p_n(x) \rvert \,dx \leq \int_a^b \lvert f(x) - g(x) \,dx \rvert + \int_a^b \lvert g(x) - p_n(x) \rvert \,dx < \tfrac{\varepsilon\eta}{2} + \tfrac{\varepsilon\eta}{2} = \varepsilon\eta,
+        \end{equation}
+        Then, by the Tchebyshev’s Inequality, we have for all $n > N$,
+        \begin{equation}
+            \lvert \{\lvert f - p_n \rvert > \varepsilon\} \rvert = \tfrac{1}{\varepsilon}\int_{\{\lvert f - p_n \rvert > \varepsilon \}} \lvert f - p_n \rvert \,dx \leq \tfrac{1}{\varepsilon}\int_a^b \lvert f(x) - p_n(x) \rvert \,dx < \tfrac{1}{\varepsilon}\cdot\varepsilon\eta = \eta
+        \end{equation}
+        Hence, we know that $p_n$ converges to $f$ in measure by the definition of convergence in measure. Then, by the theorem, we proved in class, we know that since $[a,b]$ is measurable and $p_n, f$ are both measurable and finite a.e because $f$ is integrable, then there exists a subsequence $\{p_{n_k}\}$ such that $p_{n_k} \to f$ pontwise a.e..
+        
+        Next, since $\lvert [a,b] \rvert = b-a < \infty$ and $p_{n_k}, f$ are measurable and finite a.e., and $p_{n_k} \to f$ pointwise a.e, we could apply the Egorov's Theorem here. This means, for $\delta > 0$, there exists a measurable set $A \subset E$ such that $\lvert A \rvert < 2\varepsilon$ and
+        \begin{equation}
+            \sup_{x\in[a,b] - A} \lvert f(x) - p_{n_k}(x) \rvert \to 0 \text{ as } n\to \infty
+        \end{equation}
+        Also, we can approximate $A$ using a inner closed set, that is there exists a closed set $B \subset A$ such that $\lvert A - B \rvert < \delta$. Hence, $\lvert B \rvert \leq \lvert A \rvert - \lvert A - B \rvert < 2\delta - \delta = \delta$. Let $F = [a,b]-B$, then $[a,b]-A \subset F$. Hence, we have $F \subseteq[a,b]$ with $\lvert [a,b] - F \rvert = \lvert B \rvert < \delta$, and there exists a sequence $\{p_{n_k}\}$ such that
+        \begin{equation}
+            \sup_{x\in F}\lvert f(x) - p_{n_k}(x) \rvert \to 0 \text{ as } n \to \infty
+        \end{equation}
+    \end{proof}
+\end{answer}

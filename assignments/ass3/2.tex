@@ -1,0 +1,74 @@
+\section{Question 2}
+
+\begin{question}
+    Prove that the following sets have exterior measure zero.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    The graph
+    $$
+        \Gamma_f=\{(x, f(x)): x \in \mathbb{R}\} \subseteq \mathbb{R}^2,
+    $$
+    where $f: \mathbb{R} \rightarrow \mathbb{R}$ is a continuous function.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        By continuity, we could find a finite collection of points $A = \{\cdots, -\tfrac{5}{2}, -\tfrac{3}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{3}{2}, \tfrac{5}{2}, \cdots\}$, and since $f$ is continuous, then $f$ is continuous at these points. Then, there exist some $\varepsilon_i > 0$ such that for all $x_i \in A$ such that when $y \in (x_i - \tfrac{1}{2}, x_i + \tfrac{1}{2})$, $f(y) \in (f(x_i) - \varepsilon_i, f(x_i) + \varepsilon_i)$. Therefore, we could define a collection of non-overlapping boxes $\{B_j\}_j$ for each $B_j = [x_j - \tfrac{1}{2}, x_j + \tfrac{1}{2}] \times [f(x_j) - \varepsilon_j, f(x_j) + \varepsilon_j]$. Note that $\Gamma \subseteq \bigcup_{j = 1}^{\infty}B_j$, then $\lvert \Gamma \rvert_e \leq \sum_{j=1}^{\infty}B_j$.
+        
+        For each $B_j$, we could fix $0 < \delta_j$. Then, since $[x_j - \tfrac{1}{2}, x_j + \tfrac{1}{2}]$ is compact, we know that $f$ is uniformly continuous on this interval. Therefore, there exist $\gamma_j$ such that for all $\lvert x_{j_l} - x_{i_{j+1}} \lvert < \gamma_j$, we have $\lvert f(x_{j_l}) - f(x_{j_{l+1}}) \rvert < \delta_j$. Then, we could obtain a finite collection (cardinality N) of boxes $\{Q_{j_l}\}_l$, where $Q_{j_l} = [x_{j_l}, x_{j_l} + \gamma_j] \times [f(x_{j_l}), f(x_{j_l})+\delta_j]$ for $x_{j_1} = x_j - \tfrac{1}{2}$. Now, by the properties of the boxes, we have:
+        \begin{equation}
+            \lvert B_j \rvert_e \leq \sum_{l = 1}^{N}\Vol(Q_{j_l}) = N\gamma_j\delta_j = \delta_j
+        \end{equation}
+        Because, the above equation holds for any $\delta_j$, then $\lvert B_j \rvert_e = 0$ for all $j$. Next, by the Countable Sub-addictivity, since $\Gamma \subseteq \bigcup_{j = 1}^{\infty}B_j$, then:
+        \begin{equation}
+            \lvert \Gamma \rvert_e \leq \sum_{j=1}^{\infty} \lvert B_j \rvert_e = 0
+        \end{equation}
+        Hence $\lvert \Gamma \rvert_e = 0$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    The subspace
+    $$
+        \mathbb{R}^{n-1} \times\{0\}=\left\{\left(x_1, . ., x_{n-1}, 0\right): x_1, . ., x_{n-1} \in \mathbb{R}\right\}
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Fix $\varepsilon > 0$ The subspace is covered by a countable collection of boxes 
+        $$\{B_l\}_l=\{\prod_{j=1}^{n-1}[m_{l_j},m_{l_{j}}+1]\times\left[-\tfrac{\varepsilon}{2^{l+1}},\tfrac{\varepsilon}{2^{l+1}}\right]\}_l, \;\;\;\text{ with $m_{l_j} \in \mathbb{Z}$ for all $l,j$}$$
+        Then, by the property of boxes. we have:
+        \begin{equation}\label{eqn:eqn1}
+            \lvert \mathbb{R}^{n-1} \times\{0\} \rvert_e \leq \sum_{l = 1}^{\infty}\Vol(B_l) = \sum_{l = 1}^{\infty}\tfrac{\varepsilon}{2^{l}} = \varepsilon
+        \end{equation}
+        Because the equation \ref{eqn:eqn1} holds for all $\varepsilon$, we proved that $\lvert \mathbb{R}^{n-1} \times\{0\} \rvert_e = 0$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   The set $F$ which contains all numbers $x \in[0,1]$ who's decimal expansion does not contain the digit 4 .
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Define
+        \begin{equation}
+            \begin{aligned}
+                F_0 =& [0,1],\\
+                F_1 =& [0,0.4) \cup [0.5,1],\\
+                F_2 =& [0,0.04) \cup [0.05,0.14) \cup [0.15,0.24) \cup [0.25,0.34) \cup [0.35,0.4) \cup[0.5,0.54)\\
+                &\cup [0.55,0.64) \cup \cdots [0.85,0.94) \cup [0.95,1]\\
+                &\vdots
+            \end{aligned}
+        \end{equation}
+        Then, $F = \bigcup_{n = 0}^{\infty} F_n$. Next, let $F_n'$ be obtained by changing every open interval in $F_n$ into closed interval, where for each integer $n$, $F_n'$ is a union of $9^{n}$ disjoint closed intervals, each of which has length $10^{-n}$. Clearly, $F' = \bigcup_{n = 0}^{\infty}F_n'$ covers $F$ Thus, $F \subseteq F' \subseteq F_n',\; \forall n$. Hence, by the properties of boxes, we have $\lvert F \rvert_e \leq \lvert F_n' \rvert_e = (\tfrac{9}{10})^{n-1} \; \forall n$. Therefore, $\lvert F \rvert_e = \lim_{n \to \infty}(\tfrac{9}{10})^{n-1} = 0$.
+    \end{proof}
+\end{answer}

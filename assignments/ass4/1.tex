@@ -1,0 +1,41 @@
+\section{Question 1}
+
+\begin{question}
+    Let $E \subseteq \mathbb{R}$ be a measurable set with $|E|>0$. Prove that there exists $a \in \mathbb{R}$, $a \neq 0$, such that $|(E+a) \cap E|>0$.
+    (In fact, this claim holds in $\mathbb{R}^d$ for every $d \in \mathbb{N}$, so you are welcome to prove it in this more general form).
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        We will show this by contradiction. Assume $\lvert (E+a) \cap E \rvert = 0$ for all $a \in \mathbb{R}$. Then, we could bound $E$ by $[-N,N]$ by defining $E_N = E \cap [-N,N]$. Then, $\{E_N\}_N \subset E$ will be a measurable sequence of sets. Then, $E_N + \tfrac{1}{i}$ will be bounded by $[-(N+1),N+1]$ for all $i \in \mathbb{N}$. Then $\bigcup_i (E_N + \tfrac{1}{i}) \subseteq [-(N+1),(N+1)]$. Therefore, $\lvert \bigcup_i (E_N+\tfrac{1}{i}) \rvert\leq 2N+2$ since $[-(N+1),(N+1)]$ is a box.
+        
+        Next, if we could separate $\bigcup_i (E_N+\tfrac{1}{i})$ into countable many non-overlapping sets, we can write its measure into countable sum of measure of every parts of it. If we look at the intersection of any two sets $E_N + \tfrac{1}{i}$ and $E_N + \tfrac{1}{j}$ for some $j \neq i$, we would have:
+        \begin{equation}
+            E_{ij} = (E_N + \tfrac{1}{i}) \cap (E_N + \tfrac{1}{j})
+        \end{equation}
+        If $x \in E_{ij}$, then $x = e_1 + \tfrac{1}{i} = e_2 + \tfrac{1}{j}$ for some $e_1, e_2 \in E_N$. Then $e_1 = e_2 + (\tfrac{1}{j} - \tfrac{1}{i})$. Then $x - \tfrac{1}{i} \in E_N \cap (E_N + (\tfrac{1}{j} - \tfrac{1}{i}))$. Thus $E_{ij} - \tfrac{1}{j} \subset E_N  \cap (E_N + (\tfrac{1}{j} - \tfrac{1}{i}))$. Hence:
+        \begin{equation}
+            \lvert E_{ij} - \tfrac{1}{j} \rvert = \lvert E_{ij} \rvert \leq \lvert E_N \cup (E_N + (\tfrac{1}{j} - \tfrac{1}{i})) \rvert = 0 \text{ (by assumption)}.
+        \end{equation}
+        Therefore, $E_{ij}$'s are measure $0$ for all $i \neq j$. Now, define:
+        \begin{equation}
+            F_i = (E_N + \tfrac{1}{i}) - \bigcup_{j \in \mathbb{N}}E_{ij}
+        \end{equation}
+        Notice, if we denote $C = \bigcup_i (E_N + \tfrac{1}{i}) - \bigcup_{i} F_i$, then $C \subset \bigcup_{j \in \mathbb{N}} E_{ij}$. Hence,
+        \begin{equation}
+            \lvert C \rvert \leq \sum_{j = 1}^{\infty} \lvert E_{ij} \rvert = 0 \text{ (by $\sigma$-subadditivity)}
+        \end{equation}
+        Now, because $C$ and $E_N + \tfrac{1}{i}$ are disjoint for any $i$, and $\bigcup_i (E_N + \tfrac{1}{i}) = C \cup \bigcup_{i} F_i$. Then, by $\sigma$-additivity, we have
+        \begin{equation}
+            \begin{aligned}
+                \left\lvert \bigcup_i (E_N + \tfrac{1}{i}) \right\rvert &= \left\lvert C \right\rvert + \left\lvert \bigcup_i F_i \right\rvert\\
+                &= \sum_{i}^{\infty} \lvert F_i \rvert \text{ (since $F_i$'s are disjoint and measurable).}\\
+                &= \sum_{i}^{\infty} \left\lvert (E_{N} + \tfrac{1}{i}) - \bigcup_{j \in \mathbb{N}}E_{ij}\right\rvert\\
+                &= \sum_{i}^{\infty} \left(\left\lvert E_N + \tfrac{1}{i}\right\rvert - \left\lvert \bigcup_{j \in \mathbb{N}}E_{ij}\right\rvert\right)\\
+                &= \sum_{i}^{\infty} \left\lvert E_N + \tfrac{1}{i}\right\rvert\\
+                &= \sum_{i}^{\infty} \left\lvert E_N \right\rvert = \infty
+            \end{aligned}
+        \end{equation}
+        This contradicts that $\left\lvert \bigcup_i (E_N + \tfrac{1}{i}) \right\rvert \leq 2N+2$. Hence, there exists some $a \in \mathbb{R}$ such that $\lvert (E + a) \cap E \rvert > 0$.
+    \end{proof}
+\end{answer}

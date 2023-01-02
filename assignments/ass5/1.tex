@@ -1,0 +1,55 @@
+\section{Question 1}
+
+\begin{question}
+    Read sections 2.4.1 and 2.4.2 in Chris Heil's book ( $\mathrm{pp}$ 81-83) for a different proof of the existence of non-measurable sets. Solve the following questions:
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Show that every subset of $\mathbb{R}$ that has positive exterior Lebesgue measure contains a nonmeasurable subset.
+\end{question}
+
+\begin{answer}
+    Let $E \subset \mathbb{R}$ be can arbitrary subset of $\mathbb{R}$ with positive exterior Lebesgue  measure. Using the same equivalence relation in the proof of the book, we could find equivalence classes for all $x \in E$:
+    \begin{equation}
+        [x]_{\sim} = \{y \in E \mid x - y \in \mathbb{Q}\} = \{r + x \mid r \in \mathbb{Q}\} = \mathbb{Q} + x
+    \end{equation}
+    Similar to the proof in the book, we could choose one element from each of these equivalence class to form a subset $N$ of $\mathbb{R}$ by the Axiom of Choice.
+    
+    Because the distinct equivalence classes partition the set $E$, we would have:
+    \begin{equation}
+        E  = \bigcup_{x \in N}(\mathbb{Q} + x) = \bigcup_{x \in N} \bigcup_{r \in \mathbb{Q}}(r + x) = \bigcup_{r \in \mathbb{Q}}(r + N)
+    \end{equation}
+    Looking at the exterior measure, by the countable subadditivity and the property of the exterior measure (translation-invariant), we have
+    \begin{equation}
+        \lvert E \rvert_e = \left\lvert \bigcup_{r \in \mathbb{Q}}(N+r) \right\rvert_e \leq \sum_{r \in \mathbb{Q}} \lvert N + r\rvert_e = \sum_{r \in \mathbb{Q}}\lvert N \rvert_e
+    \end{equation}
+    Because $E$ has positive exterior Lebesgue measure, then $0 < \lvert E \rvert_e \leq \sum_{r \in \mathbb{Q}}\lvert N \rvert_e$, so that $\lvert N \rvert_e > 0$. Now, let $x,y \in N$, then we know that $x \notin [y]_{\sim}$ by construction. Hence, $x - y \notin\mathbb{Q}$. These elements are exactly the elements of $N-N$, so that $N-N$ contains no intervals in $\mathbb{R}$ because $\mathbb{Q}$ is dense in $\mathbb{R}$. Thus, by the Steinhaus Theorem, we know that $N$ is not measurable. Now, we have found a nonmeasurable set $N$ in $E$, an arbitrary set of $\mathbb{R}$, so that we could using the same procedure to find the nonmeasurable subset in any subset of $\mathbb{R}$ with positive exterior Lebesgue measure.
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Given any integer $d>0$, show that there exists a set $N \subset \mathbb{R}^d$ that is not Lebesgue measurable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First, we could extend the Steinhaus Theorem to the $d$-dimension by change every intervals in its proof by boxes. Then, similar as Part i, we could construct a similar equivalence relation, which defines the equivalence classes for all $x = (x_1,x_2,\cdots,x_d) \in \mathbb{R}^d$:
+        \begin{equation}
+            [x]_{\sim} = \{y = (y_1,y_2,\cdots,y_d) \in \mathbb{R}^d \mid x - y \in \mathbb{Q}^d = \{r + x \mid r = (r_1,r_2,\cdots,r_d) \in \mathbb{Q}^d\}\} = \mathbb{Q}^d + x
+        \end{equation}
+        Now, by the axiom of choice, we could construct $N$ in the same way as Part i.
+        
+        Because the distinct equivalence classes partition the set $\mathbb{R}^d$, we would have:
+        \begin{equation}
+            \mathbb{R}^d  = \bigcup_{x \in N}(\mathbb{Q} + x) = \bigcup_{x \in N} \bigcup_{r \in \mathbb{Q}}(r + x) = \bigcup_{r \in \mathbb{Q}}(r + N)
+        \end{equation}
+        Looking at the exterior measure, by the countable subadditivity and the property of the exterior measure (translation-invariant), we have
+        \begin{equation}
+            \infty = \lvert \mathbb{R}^d \rvert_e = \left\lvert \bigcup_{r \in \mathbb{Q}}(N+r) \right\rvert_e \leq \sum_{r \in \mathbb{Q}} \lvert N + r\rvert_e = \sum_{r \in \mathbb{Q}}\lvert N \rvert_e
+        \end{equation}
+        Then $\lvert N \rvert_e > 0$. Now, let $x,y \in N$, then we know that $x \notin [y]_{\sim}$ by construction. Hence, $x - y \notin\mathbb{Q}^d$. These elements are exactly the elements of $N-N$, so that $N-N$ contains no intervals in $\mathbb{R}^d$ because $\mathbb{Q}^d$ is dense in $\mathbb{R}^d$. Thus, by the Steinhaus Theorem, we know that $N$ is not measurable. Now, we have found a nonmeasurable set $N$ in $\mathbb{R}^d$.
+    \end{proof}
+\end{answer}

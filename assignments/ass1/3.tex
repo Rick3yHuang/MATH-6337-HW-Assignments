@@ -1,0 +1,17 @@
+\section{Question 3}
+
+\begin{question}
+    Prove that if $a \in \ell^q$ for some finite index $q$, then $\|a\|_p \rightarrow\|a\|_{\infty}$ as $p \rightarrow \infty$. Give an example of a sequence $a \in \ell^{\infty}$ for which this fails.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since for all $a_i$, we have $\lvert a_i \rvert \leq \lVert a \rVert_p$ for all $i$ and $p$, then $\sup_{1 \leq i < \infty}{\lvert a_i \rvert} \leq \lim_{p \to \infty}{\lVert a \rVert_p}$, i.e. $\lVert a \rVert_{\infty} \leq \lim_{p \to \infty}{\lVert a \rVert_p}$
+        
+        Next,
+        \begin{equation}
+            \lVert a \rVert_p = \left(\sum_{j=1}^{\infty}\left\lvert a_j\right\rvert^{p}\right)^{\frac{1}{p}} = \left(\sum_{j=1}^{\infty}\left\lvert a_j\right\rvert^{p-q} \cdot\left\lvert a_j\right\rvert^q\right)^{\frac{1}{p}} \leq\lVert a\rVert_{\infty}^{\frac{p-q}{p}} \cdot\left(\sum_{j=1}^{\infty}\left\lvert a_j\right\rvert^q\right)^{\frac{1}{p}}=\lVert a\rVert_{\infty}^{1-\frac{q}{p}} \cdot\lVert a\rVert_q^{\frac{q}{p}},
+        \end{equation}
+        since $\lvert a_j \rvert \leq \lVert a \rVert$ for all $j$. If we take the limits of the both sides, we have $\lim_{p \to \infty}{\lVert a \rVert_p} = \lim_{p \to \infty}{\left(\lVert a\rVert_{\infty}^{1-\frac{q}{p}} \cdot\lVert a\rVert_q^{\frac{q}{p}}\right)} = {\lVert a \rVert_{\infty}\cdot \lVert a \rVert_q^0} = \lVert a \rVert_{\infty}$. Therefore, $\lVert a \rVert_{\infty} \leq \lim_{p \to \infty}{\lVert a \rVert_p} \leq \lVert a \rVert_{\infty}$ so that $\lim_{p \to \infty}{\lVert a \rVert_p} = \lVert a \rVert_{\infty}$.
+    \end{proof}
+\end{answer}

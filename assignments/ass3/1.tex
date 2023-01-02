@@ -1,0 +1,26 @@
+\section{Question 1}
+
+\begin{question}
+    We stated the following result in class, but only indicated its proof. Complete the proof with all details: Let $Q_1, \ldots Q_n$ be non-overlapping boxes, then
+    $$
+        \left|\bigcup_{j=1}^n Q_j\right|_e=\sum_{j=1}^n \Vol\left(Q_j\right) .
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $\bigcup_{j=1}^nQ_j \subseteq \bigcup_{j=1}^nQ_j$, then $\left \lvert \bigcup_{j = 1}^n Q_j\right\rvert_e \leq \sum_{j=1}^n \Vol\left(Q_j\right)$.
+        
+        Let $\{B_l^{\circ}\}_l$ be a set of non-overlapping boxes that covers $\bigcup_{j = 1}^n Q$. Then, let $\varepsilon > 0$, we have
+        $$\left|\bigcup_{j=1}^n Q_j\right|_e \leq \sum_{l=1}^{\infty} \Vol\left(B_l\right) \leq \left|\bigcup_{j=1}^n Q_j\right|_e + \varepsilon$$
+        Since each box $Q_i$ is closed and bounded, each $Q_i$ is compact. Then, the union $\bigcup_{j=1}^n Q_j$ is also compact. Hence, beacuse $\bigcup_{l = 1}^{\infty}B_l$ is an open cover of $\bigcup_{j=1}^n Q_j$, then due to the compactness, we know that there exists a finite subcover of $\bigcup_{l = 1}^{\infty}B_l$ which is denoted $\bigcup_{i = 1}^{N}B_{l_i}$. Hence, $\bigcup_{j=1}^n Q_j \subseteq \bigcup_{i = 1}^{N}B_{l_i}$. Next, by the properties of boxes, we have
+        $$
+            \begin{aligned}
+                \sum_{j = 1}^n\Vol (Q_j) &\leq \sum_{i = 1}^N\Vol (B_{l_j})\\
+                &\leq \sum_{l = 1}^{\infty}\Vol (B_l)\\
+                &\leq \left|\bigcup_{j=1}^n Q_j\right|_e + \varepsilon
+            \end{aligned}
+        $$
+        Because this holds for any $\varepsilon$, we proved that $\sum_{j = 1}^n\Vol (Q_j) \leq \left|\bigcup_{j=1}^n Q_j\right|_e$. Thus, $\sum_{j = 1}^n\Vol (Q_j) = \left|\bigcup_{j=1}^n Q_j\right|_e$
+    \end{proof}
+\end{answer}

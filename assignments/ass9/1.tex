@@ -1,0 +1,53 @@
+\section{Question 1}
+
+\begin{question}
+    [15 points] Given a set $E \subseteq \mathbb{R}^d$ with $|E|_e<\infty$, show that the following two statements are equivalent.
+    
+    i. $E$ is Lebesgue measurable
+    
+    ii. For every $\epsilon>0$ there exist $A, B \subseteq \mathbb{R}^d$ with $|A|_e,|B|_e<\epsilon$, and a union of finitely many nonoverlapping boxes $S$, such that $E=(S \cup A)-B$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        ($i \Rightarrow ii$): Let $\varepsilon > 0$. By definition of Lebesgue measurable, we know that there exists $U$ open such that $E \subset U$ such that $\lvert U - E \rvert_e < \varepsilon$ because $E$ is Lebesgue measurable. Let $B = U - E$, then $\lvert B \rvert_e = \lvert U - E \rvert_e < \varepsilon$. Also, because $E \subset U$, then 
+        \begin{equation}
+            \lvert U \rvert_e - \lvert E \rvert_e = \lvert U - E \rvert_e = \lvert B \rvert \Leftrightarrow \lvert U \rvert_e = \lvert E \rvert_e + \lvert B \rvert_e < \lvert E \rvert_e + \varepsilon < \infty
+        \end{equation}
+        since $\lvert E \rvert_e < \infty$. Then, because $\vert U \rvert_e < \infty$ and $U$ is an open set, from the corollary we proved in class, we know that there exists a countable collection of non-overlapping boxes $\{Q_j\}_j$ such that $U = \bigcup_{j=1}^{\infty} Q_j$. Then $\lvert U \rvert_e = \sum_{j=1}^{\infty} \Vol(Q_j)$. Also, since we know that $U$ is open, therefore Lebesgue measurable. then $\lvert U \rvert = \lvert U \rvert_e$. Then, we could denote $S_n = \bigcup_{j=1}^{n} Q_j$ and $\lvert S_n \rvert = \bigcup_{j=1}^{n} \Vol(Q_j)$ since $Q_j$ are non-overlapping, and notice that:
+        \begin{equation}
+            S_1 \subset S_2 \subset S_3 \subset \cdots,
+        \end{equation}
+        then by the continuity from below, because $S_i$ for all $i \in \{1,2,\cdots\}$ are union of boxes, therefore are in $\mathcal{L}(\mathbb{R}^d)$, we have that:
+        \begin{equation}
+            \lvert U \rvert = \left\lvert \bigcup_{n = 1}^{\infty} S_n \right\rvert = \lim_{j \to \infty} \Vol (S_n)
+        \end{equation}
+        Thus, by the definition of the limits, we know that $\exists \, N \in \mathbb{N}$ such that $\forall\, n \geq N$ such that $\lvert U - S_n \rvert < \varepsilon$. Now, denote $S = S_N$ and $A = U - S$, then $\lvert A \rvert_e = \lvert U - S\rvert_e $. Since $S \subset U$ and $U, S \in \mathcal{L}(\mathbb{R}^d)$, then
+        \begin{equation}
+            \lvert A \rvert_e = \lvert U - S \rvert_e = \lvert U - S\rvert < \varepsilon
+        \end{equation}
+        Thus, since $A = U - S$, then $U = S \cap A$. Also, since $B = U - E$, then $E = U - B = (S\cap A)-B$ and $\lvert A \rvert_e , \lvert B \rvert_e < \varepsilon$.
+        
+        ($ii\Rightarrow i$): Let $\varepsilon > 0$. Then by assumption, there exist $A,B \subset \mathbb{R}^d$ with $\lvert A \rvert_e < \tfrac{\varepsilon}{4}, \lvert B \rvert_e < \tfrac{\varepsilon}{2}$, and a union of finitely many non-overlapping boxes $S$, such that $E = (S \cup A) - B$. Now, let $M = \partial S \cup A$. then since $M \subset \mathbb{R}^d$. Then by the claim we proved in class,  we know that $\lvert M \rvert_e = \inf \sum_{M \subseteq P_k^{\circ}}\Vol(P_k)$. Then, there exists $O = \bigcup_{k=1}^{\infty}P_k^{\circ} \supset M$, where $\{P_k\}_k$ is a countable collection of boxes, such that
+        \begin{equation}
+            \lvert O^{\circ} - M \rvert_e \leq \lvert O - M \rvert_e < \tfrac{\varepsilon}{4} \Leftrightarrow \lvert O \rvert_e - \lvert M \rvert_e < \tfrac{\varepsilon}{4} \Leftrightarrow \lvert O \rvert_e < \lvert M \rvert_e + \tfrac{\varepsilon}{4} = \tfrac{\varepsilon}{2},
+        \end{equation}
+        since $M \subset O$ (so we have $\lvert M - O \rvert_e = \lvert M \rvert_e - \lvert O \rvert_e$).
+        
+        Now, since $O$ is a countable union of interior of boxes, i.e. open sets, $O$ is an open set. Then, if we let $U = S^{\circ} \cup O$ is an open set as a union of two union sets. Then, because
+        \begin{equation}
+            \begin{aligned}
+                \lvert U - E \rvert_e = & \lvert (S^{\circ}\cup O) - E \rvert_e\\
+                = &\lvert (S^{\circ}\cup ((O-M)\cup M)) - E \rvert_e\\
+                = &\lvert (S^{\circ} \cup M) \cup (O - M) - E \rvert_e\\
+                = &\lvert ((S^{\circ} \cup M) - E ) \cup \lvert((O-M)-E) \rvert_e\\
+                \leq &\rvert ((S^{\circ} \cup M) - E) \rvert_e + \lvert ((O - M) - E) \rvert_e\\
+                &\text{ (by the countable sub-additivity of exterior measure)}\\
+                \leq &\lvert (E + B) - E \rvert_e + \lvert O - M \rvert_e \text{ (since $(O-M)-E \subseteq O-M$)}\\
+                = &\lvert B \rvert_e + \lvert O - M \rvert_e\\
+                < &\tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon
+            \end{aligned}
+        \end{equation}
+        Thus, we know that for all $\varepsilon > 0$, there exists a open set $U$ as constructed above such that $\lvert U - E \rvert_e < \varepsilon$, so that $E$ is Lebesgue measurable.
+    \end{proof}
+\end{answer}

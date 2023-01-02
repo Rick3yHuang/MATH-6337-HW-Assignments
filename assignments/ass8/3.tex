@@ -1,0 +1,25 @@
+\section{Question 3}
+
+\begin{question}
+    Fix $1<p<\infty$ and let $q$ be such that $1 / p+1 / q=1$. Assume that functions $f_n \in L^p(\mathbb{R})$ satisfy $f_n \rightarrow f$ a.e. and $\sup _n\left\|f_n\right\|_p<\infty$. Prove that $f \in L^p(\mathbb{R})$, and that for each $g \in L^q(\mathbb{R})$ we have that
+    $$
+    \lim _{n \rightarrow \infty} \int_{\mathbb{R}} f_n g=\int_{\mathbb{R}} f g .
+    $$
+    Do these statements still hold if $p=1$ and $q=\infty$ ?
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        By the Hölder's Inequality, we have
+        \begin{equation}
+            \int_{\mathbb{R}} \lvert f_ng \rvert \leq \left(\int_{\mathbb{R}}\lvert f \rvert^p\right)^{\frac{1}{p}} \cdot \left(\int_{\mathbb{R}}\lvert g \rvert^q\right)^{\frac{1}{q}} = \lVert f_n \rVert_p \cdot \lVert g \rVert_q \leq \sup_n \lVert f_n \rVert_p \cdot \lVert g \rVert_q < \infty
+        \end{equation}
+        since $\sup_n\lVert f_n \rVert_p < \infty$ and $g \in L^q(\mathbb{R})$. Thus, $\lvert f_ng\rvert$ is integrable and $\lvert f_ng \rvert \leq \lvert f_ng \rvert$, by the D.C.T., we know that $\lim_{n \to \infty} \int_{\mathbb{R}} f_ng = \int_{\mathbb{R}}fg$, since $f_n \to f$ a.e. which means $f_ng \to fg$ a.e..
+        
+        This also hold for $p = 1$ and $q = \infty$, since by the Hölder's Inequality, we would have:
+        \begin{equation}
+            \int_{\mathbb{R}} \lvert f_ng \rvert \leq \left(\int_{\mathbb{R}}\lvert f \rvert\right) \cdot \lVert g \rVert_{\infty} \leq \sup_n \lVert f_n \rVert_1 \cdot \lVert g \rVert_{\infty} < \infty
+        \end{equation}
+        and the rest of the proof are the same.
+    \end{proof}
+\end{answer}

@@ -1,0 +1,60 @@
+\section{Question 5}
+
+\begin{question}
+    [15 points] Let $E \subseteq \mathbb{R}^d$ be measurable, $0<|E|<\infty$, and let $f_n \in L^1(E)$ be such that $f_n(x) \rightarrow f(x)$ pointwise almost everywhere on $E$. Assume that for some $1<p<\infty$ we have
+    $$
+    \sup \left\|f_n\right\|_p<\infty .
+    $$
+    Prove that $f \in L^1(E)$ and that $f_n \rightarrow f$ in $L^1$ norm.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $f_n \to f$ pointwise a.e., we know that $\lvert f \rvert = \liminf_{n \to \infty} \lvert f_n \rvert$. Then since $f_n \in L^1(E)$, then $\lvert f_n \rvert$ are nonegative and measurable and $E \subset \mathbb{R}^d$ measurable, then by the Fatou's Lemma, we have
+        \begin{equation}
+            \int_{E} \lvert f \rvert = \int_E \liminf_{n \to \infty} \lvert f_n \rvert = \liminf_{n \to \infty} \int_E \lvert f_n \rvert
+        \end{equation}
+        Next, since $f_n$ and $1$ measurable, and since $1 < p < \infty$, we can apply the Hölder's Inequality to $\int_E \lvert f \cdot 1 \rvert$:
+        \begin{equation}
+            \begin{aligned}
+                \lVert f \rVert_1 = \int_{E} \lvert f \rvert = &\liminf_{n \to \infty} \int_E \lvert f_n \rvert = \liminf_{n \to \infty} \left(\left(\int_E \lvert f_n \rvert^p\right)^{\frac{1}{p}}\left(\int_E \lvert 1 \rvert^{\frac{p}{p-1}}\right)^{1-\frac{1}{p}}\right)\\
+                = &\lvert E \rvert^{1-\frac{1}{p}} \cdot \liminf_{n \to \infty} \lVert f_n \rVert_p \leq \lvert E \rvert^{1-\frac{1}{p}} \cdot \sup \lVert f_n \rVert_p < \infty
+            \end{aligned}
+        \end{equation}
+        Thus, $f \in L^1(E)$. We could  denote $\sup \lVert f_n \rVert_p = M$, since $\sup \lVert f_n \rVert_p < \infty$ and we can also denote $\lvert E \rvert = u$. Let $\varepsilon > 0$. Then, since $E < \infty$, $\{f_n\}$ are measurable, and $f_n \to f$ pointwise a.e., then we can apply the Egorov's Theorem. That means there exists a measurable set $A \subset E$ such that $\lvert A \rvert < \left(\tfrac{\varepsilon}{4M}\right)^{\frac{p}{p-1}}$, such that if we let $F = E - A$, we have
+        \begin{equation}
+            \begin{aligned}
+                &\lim_{n \to \infty} \lVert (f - f_n) \cdot \mathbb{1}_{F} \rVert_{\infty} = 0\\
+                \Rightarrow & \exists\, N \in \mathbb{N}, \text{ such that } \forall\, n > N, \quad \lVert (f - f_n) \cdot \mathbb{1}_F \rVert_{\infty} < \tfrac{\varepsilon}{2u}
+            \end{aligned}
+        \end{equation}
+        Then, we could also prove $f \in L^p(E)$ so we can use $\lVert f \rVert_p$ by applying Fatou's Lemma again,
+        \begin{equation}
+            \begin{aligned}
+                \lVert f \rVert_p &= \left(\int_E \lvert f \rvert^p\right)^{\frac{1}{p}} = \left(\int_E (\liminf_{n \to \infty} \lvert f_n \rvert)^p\right)^{\frac{1}{p}} = \left(\int_E \liminf_{n \to \infty} \lvert f_n \rvert^p\right)^{\frac{1}{p}}\\
+                = &\left(\liminf_{n \to \infty} \int_E \lvert f_n \rvert^p\right)^{\frac{1}{p}} = \left(\liminf_{n \to \infty} \lVert f_n \rVert_p^p\right)^{\frac{1}{p}} \leq (M^p)^{\frac{1}{p}} < \infty
+            \end{aligned}
+        \end{equation}
+        Now, using the same $N$ we chose before, for all $n > N$, we have:
+        \begin{equation}
+            \begin{aligned}
+                \lVert f - f_n \rVert_1 = &\int_E \lvert f - f_n \rvert\\
+                = &\int_F \lvert f - f_n \rvert + \int_A \lvert f - f_n \rvert\\
+                = &\int_E \lvert f - f_n \rvert \cdot \mathbb{1}_F + \int_A \lvert f - f_n\rvert\\
+                &\, \left( \text{by the property of Lebesgue integral that $\int_A f = \int_E f \cdot \mathbb{1}_A$} \right)\\
+                = &\int_E \lvert f - f_n \cdot \mathbb{1}_F \rvert + \int_A \lvert f - f_n\rvert\\
+                \leq &\int_E \lVert f - f_n \cdot \mathbb{1}_F \rVert_{\infty} + \int_A \lvert f - f_n\rvert\\
+                = &\lVert f - f_n \cdot \mathbb{1}_F \rVert_{\infty} \int_E 1 + \int_A \lvert f - f_n\rvert\\
+                = &\lVert f - f_n \cdot \mathbb{1}_F \rVert_{\infty} \lvert E \rvert + \int_A \lvert f - f_n\rvert\\
+                \leq &\tfrac{\varepsilon}{2u} \cdot u + \int_A \lvert f - f_n\rvert\\
+                = &\tfrac{\varepsilon}{2} +  \left(\left(\int_A \lvert f - f_n \rvert^p\right)^{\frac{1}{p}}\left(\int_A \lvert 1 \rvert^{\frac{p}{p-1}}\right)^{1-\frac{1}{p}}\right)\\
+                &\text{ (by applying the Hölder's Inequality again)}\\
+                = &\tfrac{\varepsilon}{2} + \lvert A \rvert^{1-\frac{1}{p}}\lVert f - f_n \rVert_p \text{ (in $L^p(A)$ using the same norm as $L^p(E)$)}\\
+                \leq &\tfrac{\varepsilon}{2} + \left(\tfrac{\varepsilon}{4M}\right)^{\frac{p}{p-1}\cdot\frac{p-1}{p}}\cdot(\lVert f \rVert_p + \lVert f_n \rVert_p) \text{ (by the triangular inequality of $L^p$-norm)}\\
+                \leq &\tfrac{\varepsilon}{2} + \left(\tfrac{\varepsilon}{4M}\right)\cdot(M+M)\\
+                = &\tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon
+            \end{aligned}
+        \end{equation}
+        Since, we pick $\varepsilon > 0$ arbitrarily, then we know that $f_n \to f$ in $L^1$-norm.
+    \end{proof}
+\end{answer}

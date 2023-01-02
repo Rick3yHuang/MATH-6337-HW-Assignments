@@ -1,0 +1,53 @@
+\section{Question 4}
+
+\begin{question}
+   This question regards the spaces $\ell^p$ when $0<p<1$.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Let $0<p<1$. Show that the following are not norms over $\mathbb{R}^n$ or $C^n$ :
+\end{question}
+
+\subsubsection{Part a}
+
+\begin{question}
+    \begin{equation}\label{eqn:15}
+        \left\|\left\{a_j\right\}_j\right\|_p=\left(\sum_j\left|a_j\right|^p\right)^{\frac{1}{p}}
+    \end{equation}
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Suppose by contradiction that equation \ref{eqn:15} is a norm over $\mathbb{R}^n$(Similar proof for $\mathbb{C}$). Since $(1,1,1,\cdots,1) \in \mathbb{R}^n$ and $(1,1,1,\cdots,1) = (1,0,0,\cdots,0) + (0,1,0,\cdots,0) + (0,0,1,\cdots,0) + \cdots + (0,0,0,\cdots,1)$. Then we know that the triangle inequality holds for the above equation, i.e. the following equation holds:
+        \begin{equation}
+            \lVert (1,1,1,\cdots,1) \rVert_p \leq \lVert(1,0,0,\cdots,0)\rVert_p + \lVert(0,1,0,\cdots,0)\rVert_p + \lVert(0,0,1,\cdots,0)\rVert_p + \cdots + \lVert(0,0,0,\cdots,1)\rVert_p
+        \end{equation}
+        which means $n^{\frac{1}{p}} \leq n$. This is a contradiction to the assumption that $0 < p < 1$. Hence, equation \ref{eqn:15} doesn't define a norm.
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part b}
+
+\begin{question}
+    \begin{equation}
+        \left\|\left\{a_j\right\}_j\right\|_p=\sum_j\left|a_j\right|^p
+    \end{equation}
+\end{question}
+
+\subsection{Part ii}
+
+\begin{question}
+    Prove that if $(X,\|-\|)$ is a normed space then the unit ball $B_1(0)$ in $X$ is convex (that is, show that if $v, u \in B_1(0)$ then for every $0 \leq t \leq 1$ we have $\left.t v+(1-t) u \in B_1(0)\right)$. Use this to give a second proof of Part (ia) of this question.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $v,u \in B_1(0)$, then $\lVert v \rVert < 1$ and $\lVert u \rVert < 1$. Then, 
+        \begin{equation}
+            \lVert tv + (1-t)u \rVert \leq t \lVert v \rVert + (1-t)\lVert u \rVert < t + (1-t) = 1
+        \end{equation}
+        Hence, $tv+(1-t)u \in B_1(0)$. 
+    \end{proof}
+\end{answer}

@@ -1,0 +1,79 @@
+\section{Question 4}
+
+\begin{question}
+    Let $E \subset \mathbb{R}$ be a set of exterior measure zero. Prove the following statements.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    The set $E^2:=\left\{x^2: x \in E\right\}$ satisfies $\left|E^2\right|=0$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Partition $\mathbb{R}$ into a countable collection of intervals $\{B_i\}_i = \{[m_i,m_i+1]\}_i$. Then, denote $A_i = E\bigcap B_i$ and $A_i' = E^2 \bigcap B_i$. Thus, $E \subseteq \bigcup_{i =1}^{\infty} A_i$ and $E^2 \subseteq \bigcup_{i =1}^{\infty} A_i'$. Fix $\varepsilon > 0$. Then there is a countable collection of intervals $\{Q_j\}_j = \{[a_j,b_j]\}_j$ such that $\lvert a_j - b_j \rvert = \tfrac{\varepsilon}{2^{j+1}}$ and $A_i \subseteq \bigcup_{j=1}^{\infty}Q_j$. Then, for all $x \in Q_j$, $x^2 \in [a_j^2,b_j^2] = Q_j'$. Then, $A_i' \subseteq \bigcup_{j=1}^{\infty}Q_j'$. Hence, $$\lvert A_i' \rvert_e \leq \sum_{j = 1}^{\infty}\Vol(Q_j') = \sum_{j = 1}^{\infty} \lvert a_j^2 - b_j^2\rvert = \sum_{j = 1}^{\infty} \lvert a_j + b_j\rvert \lvert a_j - b_j \rvert \leq \sum_{j = 1}^{\infty} 2\lvert a_j - b_j\rvert = \sum_{j = 1}^{\infty} 2\tfrac{\varepsilon}{2^{j+1}} = \sum_{j = 1}^{\infty} \tfrac{\varepsilon}{2^j} = \varepsilon20
+        $$
+        Because this holds for all $\varepsilon > 0$, then $\lvert A_i' \rvert_e = 0$. Now, since $E^2 \subseteq \bigcup_{i =1}^{\infty} A_i'$, by the Countable Sub-additivity, we have:
+        \begin{equation}
+            \lvert E^2 \rvert_e \leq \sum_{i = 1}^{\infty} A_i' = 0
+        \end{equation}
+        This forces $\lvert E^2 \rvert_e = 0$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    If $A \subset \mathbb{R}$ satisfies $|A|_e<\infty$ then the set
+    $$
+    A \times E=\{(x, y): x \in A, y \in E\} \subset \mathbb{R}^2
+    $$
+    satisfies $|A \times E|_e=0$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Fix $\varepsilon > 0$, then there exists a countable disjoint collection of set $\{Q_l\}_l$ such that $$\lvert A \rvert_e \leq \sum_{l = 1}^{\infty} \Vol(Q_l) \leq \lvert A \rvert_e + \sqrt{\varepsilon}$$
+        
+        Partition $\mathbb{R}$ into a countable collection of intervals $\{B_i\}_i = \{[m_i,m_i+1]\}_i$. Then, denote $E_i = E\bigcap B_i$. Since $\lvert E \rvert_e = 0$ therefore $\lvert E_i \rvert_e = 0$. Now, $A \times E \subseteq \bigcup_{i=1}^{\infty}A \times E_i$. Furthermore, there is a countable collection of intervals $\{F_{i_j}\}_j = \{[a_j,b_j]\}_j$ such that $\lvert a_j - b_j \rvert = \tfrac{\sqrt{\varepsilon}}{2^{j}}$ and $E_i \subseteq \bigcup_{j=1}^{\infty}F_{i_j}$. Thus, $E_i \subseteq \bigcup_{i =1}^{\infty} F_{i_j}$ and let $D_{i_{lj}} = Q_l \times F_{i_j}$. Note that $\{D_{i_{lj}}\}_{i_{lj}}$ is a countable collection of non-overlapping boxes covering $A\times E_i$. Hence, $A \times E_i \subseteq \bigcup_{i_{lj} = (1,1)}^{(\infty,\infty)} D_{i_{lj}}$. Thus,
+        \begin{equation}
+            \lvert A \times E_i \rvert_e \leq \sum_{i_{lj} = (1,1)}^{(\infty,\infty)} \Vol(D_{i_{lj}}) = \sum_{j=1}^{\infty}(\sum_{l = 1}^{\infty} \Vol(Q_l))\tfrac{\sqrt{\varepsilon}}{2^{j}} \leq \sum_{j=1}^{\infty}(\lvert A \rvert_e + \sqrt{\varepsilon})\tfrac{\sqrt{\varepsilon}}{2^j} = \lvert A \rvert_e \sum_{j=1}^{\infty}\tfrac{\sqrt{\varepsilon}}{2^j} + \sum_{j=1}^{\infty}\tfrac{\varepsilon}{2^j} = \lvert A \rvert_e\cdot \varepsilon + \varepsilon
+        \end{equation}
+        Because this holds for all $\varepsilon$, then $\lvert A \times E_i \rvert_e = 0$. Then, by the Countable Sub-additivity, we could show that
+        $$\lvert A \times E \rvert_e \leq \bigcup_{i=1}^{\infty}\lvert A \times E_i \rvert_e = 0$$
+        This forces $\lvert A \times E \rvert_e = 0$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   The set $\mathbb{R} \backslash E$ is dense in $\mathbb{R}$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Fix $\varepsilon > 0$ and $x \in \mathbb{R}$, then we have the open interval $Q = (x - \varepsilon, x + \varepsilon)$. Then, since we have $(\mathbb{R}\backslash E\cap Q)\cup (E\cap Q) = \mathbb{R}\cap Q$, by the Countable Sub-additivity:
+        \begin{equation}
+            \lvert \mathbb{R}\cap Q \rvert_e \leq \lvert \mathbb{R}\backslash E\cap Q \rvert_e + \lvert E \cap Q \rvert_e \Rightarrow \lvert \mathbb{R}\backslash E\cap Q \rvert_e \geq \lvert \mathbb{R}\cap Q \rvert_e - \lvert E \cap Q \rvert_e  = 2\epsilon
+        \end{equation}
+        This ensures an element $b \in \mathbb{R} \cap Q$, since otherwise $\lvert \mathbb{R} \cap Q \rvert_e = 0$. Thus, since for all $x \in \mathbb{R}$ and $\varepsilon > 0$, we could find $b \in (x - \varepsilon, x + \varepsilon)$, we showed that $\mathbb{R} \backslash E$ is dense in $\mathbb{R}$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iv}
+
+\begin{question}
+   There exists $h \in \mathbb{R}$ such that $E+h$ does not contain a rational point.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Suppose by contradiction that $\forall h \in \mathbb{R}$, $\exists q \in \mathbb{Q}$, such that $q \in E + h$. Therefore, $\forall h, h \in E + (-q)$. Therefore, for all $h$, $h \in \bigcup_{q \in \mathbb{Q}}(E+q)$. Then $\mathbb{R} \subseteq \in \bigcup_{q \in \mathbb{Q}}(E+q)$. Hence, by the Countable Sub-additivity, we have
+        \begin{equation}
+            \lvert \mathbb{R} \rvert_e \leq \sum_{q \in \mathbb{Q}}(\lvert E + q \rvert_e) = 0
+        \end{equation}
+        because $\mathbb{Q}$ is countable and $\lvert E + q \rvert_e = \lvert E \rvert_e$. This contradicts the fact that $\lvert \mathbb{R} \rvert = \infty$. Hence, there exists $h$ such that $E+h$ doesn't contain a rational point.
+    \end{proof}
+\end{answer}

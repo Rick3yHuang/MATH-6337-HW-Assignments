@@ -1,0 +1,17 @@
+\section{Question 5}
+
+\begin{question}
+    Let $E \subset \mathbb{R}$. Prove that if there exists $0 \leq \delta<1$ such that for every interval $[a, b]$ we have
+    $$
+    |E \cap[a, b]|_e \leq \delta(b-a)
+    $$
+    then $|E|_e=0$
+\end{question}
+
+\begin{answer}
+    Fix $\varepsilon > 0$ There are finite many of $[a,b]$ covering $\mathbb{R}$, therefore, we construct $\{B_j\}_j = \{[a_j,b_j]\}_j$ such that $b_j - a_j < \tfrac{\varepsilon}{2^j}$ and $\mathbb{R} \subseteq \bigcup_{j = 1}^{\infty} B_j$. Thus, from $E = E \cap \mathbb{R} = E \cap \bigcup_{j=1}^{\infty}B_j = \bigcup_{j=1}^{\infty}(E \cap B_j)$, by the Countable Sub-additivity, we have:
+    \begin{equation}
+        \lvert E \rvert_e \leq \sum_{j = 1}^{\infty}\lvert E \cap B_j \rvert_e \leq \delta \sum_{j=1}^{\infty}(b_j-a_j) = \delta \sum_{j = 1}^{\infty}\tfrac{\varepsilon}{2^j} = \delta \cdot \varepsilon
+    \end{equation}
+    This holds for all $\epsilon > 0$, then we proved that $\lvert E \rvert_e = 0$.
+\end{answer}

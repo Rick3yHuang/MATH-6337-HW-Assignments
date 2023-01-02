@@ -1,0 +1,67 @@
+\section{Question 6}
+
+\begin{question}
+    Let $E \subset \mathbb{R}$ be a set of exterior measure zero. Prove the following statements.This question regards examples which can be obtained via a Cantor set type construction.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Watch both examples in Recording 7 : Starting at time 30:24 and ending at time 1:04:04. (These are both very important examples, and the idea described in them may be used in following $\mathrm{HW}$ or exam questions.)
+\end{question}
+
+\subsection{Part ii}
+
+\begin{question}
+    Let $C$ be the Cantor. Prove the following statements.
+\end{question}
+
+\subsubsection{i}
+
+\begin{question}
+   $C$ is closed.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        By the definition of the Cantor set, we say $C = \bigcup_{n = 1}^{\infty}F_n$ where $F_n$ are the unions of $2^{n-1}$ closed intervals of length $\tfrac{1}{3^{n-1}}$. Therefore,
+        $$
+            C^c = (\bigcup_{n = 1}^{\infty}F_n)^c = \bigcap_{n=1}^{\infty}F_n^c
+        $$
+        Because $F_n^{c}$ are open intervals for all $n$, then for all $x \in F_n^c$, there exists $\varepsilon > 0$, such that $B_x^{\varepsilon} \subseteq F_n^c$. Therefore, $F_n^c$ is open, and the union $C^c$ is open. Hence, $C$ is closed.
+    \end{proof}
+\end{answer}
+
+\subsubsection{ii}
+
+\begin{question}
+   Every point in $C$ is a boundary point of $C$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        There is no interval contained in $C$, because otherwise if there exists some interval, the center one third of the interval will be removed at the next level of $F_n$ hence it will not be an interval in the intersection $C$. Therefore, the interior of $C$, $C^\circ = \emptyset$, which implies $C = \partial C$.
+    \end{proof}
+\end{answer}
+
+\subsubsection{iii}
+
+\begin{question}
+   $C^{\circ}=\emptyset$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Proved in part ii.
+    \end{proof}
+\end{answer}
+
+\subsubsection{iv}
+
+\begin{question}
+   Denote $D=\left\{\sum_{j=1}^{\infty} \frac{c_j}{3^j}: c_j=0,1\right\}$. Show that $D+D=[0,1]$ and use this to show that $C+C=[0,2]$. Conclude that $|C+C|_e=2$ while $|C|_e=0$
+\end{question}
+
+\begin{answer}
+    
+\end{answer}

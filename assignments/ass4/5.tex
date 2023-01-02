@@ -1,0 +1,17 @@
+\section{Question 5}
+
+\begin{question}
+    Let $X$ be a set, and let $\Sigma$ be the collection of all $E \subseteq X$ such that at least one of $E$ or $X-E$ is countable. Prove that $\Sigma$ is a $\sigma$ algebra on $X$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First, $\Sigma$ is not empty, because $X \in \Sigma$ since $X - X = \emptyset$ which is countable.
+        
+        Second, Let $X_1,X_2,\cdots$ be countable many elements of $\Sigma$. Then $\bigcup_{i \in \mathbb{N}}X_i = \bigcup_{i = 1}^{n}X_i \cup \bigcup_{i = n+1}^{\infty}X_i$ by relabelling the index such that $X_i$ is countable for all $i \in \{1,2,\cdots,n\}$ and $X - X_i$ is countable but $X_i$ is not countable for all $i \in \{n+1,n+2,\cdots\}$ Then $\bigcup_{i = 1}^{n}X_i$ is countable since countable union of countable sets are countable. Also, $\bigcup_{i = 1}^{n}X_i \subset X$ and $\bigcup_{i = n+1}^{\infty}X_i$. If $\bigcup_{i = n+1}^{\infty}X_i = \emptyset$, then $\bigcup_{i \in \mathbb{N}}X_i = \bigcup_{i = 1}^{n}X_i \in \Sigma$. If $\bigcup_{i = n+1}^{\infty}X_i \neq \emptyset$, we know that $X - \left(\bigcup_{i \in \mathbb{N}}X_i\right) = \bigcap_{i \in \mathbb{N}}(X - X_i) \subseteq \bigcap_{i = n+1}^{\infty}(X - X_i)$, which is countable, since each $X - X_i$ for $i \geq n+1$ and countable union of countable sets is countable. Hence, $\bigcup_{i \in \mathbb{N}}X_i \in \sigma$.
+        
+        Third, If $A \in \Sigma$. If $A$ is countable, then $X - A^c = A$ is countable, so that $A^c \in \Sigma$. If $X - A$ is countable, then $A^c - X^c = X - A \Leftrightarrow A - X^c = X - A^c$ is countable, so that $A^c \in \Sigma$. Therefore $A^c \in \Sigma$ in general.
+         
+        The above three conditions show that $\Sigma$ is a $\sigma$-algebra on $X$.
+    \end{proof}
+\end{answer}

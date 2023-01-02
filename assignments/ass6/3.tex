@@ -1,0 +1,89 @@
+\section{Question 3}
+
+\begin{question}
+   Let $E \subset \mathbb{R}^d$ be a measurable set, and let $f_n, f: E \rightarrow \mathbb{R}$ (or $\mathbb{C}$ ) be measurable functions such that $f_n$ converges to $f$ in measure. Assume that $\phi: \mathbb{R} \rightarrow \mathbb{R}$ (or $\mathbb{C} \rightarrow \mathbb{C}$ ) is continuous. Prove the following statements.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    If $\phi$ is uniformly continuous then $\phi \circ f_n$ converges to $\phi \circ f$ in measure.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $\phi$ is uniformly continuous, then $\forall\, \delta > 0 $, there exists $\eta$ such that
+        \begin{equation}
+            \forall\, x,y \in \mathbb{R} \text{ such that}\, \lvert x - y \rvert \leq \eta \Rightarrow \lvert \phi (x) - \phi(y) \rvert \leq \delta
+        \end{equation}
+        If we take the contrapositive, we have 
+        \begin{equation}
+            \forall\, x,y \in \mathbb{R} \text{ such that}\, \lvert \phi (x) - \phi(y) \rvert > \delta \Rightarrow \lvert x - y \rvert > \eta 
+        \end{equation}
+        Then Let $\varepsilon > 0$ and $\delta > 0$, since $f_n$ converges to $f$ in measure, then there exists $N \in \mathbb{N}$ such that $\forall n > N$, we have $\lvert \{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}\rvert < \varepsilon$. Notice that if $x \in \{x \in E \mid \lvert \phi \circ f_n(x) - \phi \circ f(x) \rvert > \delta\}$, then $x \in \{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}$ by the uniform continuity. Hence, 
+        \begin{equation}
+            \{x \in E \mid \lvert \phi \circ f_n(x) - \phi \circ f(x) \rvert > \delta\} \subseteq \{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}
+        \end{equation}
+        Thus,
+        \begin{equation}
+            \lvert \{x \in E \mid \lvert \phi \circ f_n(x) - \phi \circ f(x) \rvert > \delta\}\rvert \leq \lvert\{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}\rvert < \varepsilon
+        \end{equation}
+        Hence, $\phi\circ f_n$ converges to $\phi \circ f$ in measure.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    The conclusion in (i) may fail if $\phi$ is not uniformly continuous.
+\end{question}
+
+\begin{answer}
+    Let $E = \mathbb{R}$. If we choose $f_n(x) = x + \tfrac{1}{n}$, $\phi(x) = x^2$, and $f(x) = x$, we have $\phi\circ f_n(x) = x^2 + \tfrac{2}{n}x + \tfrac{1}{n}$ and $\phi\circ f(x) = x^2$. Notice that $f_n$ converges to $f$ in measure. Then, same as the example in the Question 2 Part iv, let $\delta > 0$
+    \begin{equation}
+        \begin{aligned}
+            \lvert \{\lvert \phi\circ f_n - \phi\circ f \rvert > \delta\} \rvert &= \lvert \{x \in \mathbb{R} \mid \lvert \tfrac{2x}{n} + \tfrac{1}{n^2}\rvert > \delta\} \rvert\\
+            &\geq  \lvert \{x \in \mathbb{R} \mid  \tfrac{2x}{n} + \tfrac{1}{n^2} > \delta\} \rvert\\
+            &= \lvert \{ x \in \mathbb{R} \mid x > \tfrac{\delta n^2 - 1}{2n} \} \rvert = \infty
+        \end{aligned}
+    \end{equation}
+    Thus, $\phi \circ f_n$ doesn't converge to $\phi \circ f$ in measure.
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   If $|E|<\infty$ then $\phi \circ f_n$ converges to $\phi \circ f$ in measure.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $\phi$ is continuous, then $\forall\, \delta > 0, c \in \mathbb{R}$, there exists $\eta$ such that
+        \begin{equation}
+            \forall\, x \in \mathbb{R} \text{ such that}\, \lvert x - c \rvert \leq \eta \Rightarrow \lvert \phi (x) - \phi(c) \rvert \leq \delta
+        \end{equation}
+        If we take the contrapositive, we have 
+        \begin{equation}
+            \forall\, x \in \mathbb{R} \text{ such that}\, \lvert \phi (x) - \phi(c) \rvert > \delta \Rightarrow \lvert x - c \rvert > \eta 
+        \end{equation}
+        Then Let $\varepsilon > 0$ and $\delta > 0$, since $f_n$ converges to $f$ in measure, then there exists $N \in \mathbb{N}$ such that $\forall n > N$, we have $\lvert \{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}\rvert < \varepsilon$. Notice that if $x \in \{x \in E \mid \lvert \phi \circ f_n(x) - \phi \circ f(x) \rvert > \delta\}$, then there exist $\eta$, such that  $x \in \{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}$ by the continuity. Hence, 
+        \begin{equation}
+            \{x \in E \mid \lvert \phi \circ f_n(x) - \phi \circ f \rvert > \delta\} \subseteq \{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}
+        \end{equation}
+        Thus,
+        \begin{equation}
+            \lvert \{x \in E \mid \lvert \phi \circ f_n(x) - \phi \circ f \rvert > \delta\}\rvert \leq \lvert\{x \in E \mid \lvert f_n(x) - f(x) \rvert > \eta\}\rvert < \varepsilon
+        \end{equation}
+        Hence, $\phi\circ f_n$ converges to $\phi \circ f$ in measure.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iv}
+
+\begin{question}
+   The conclusion in (iii) may fail if $|E|=\infty$.
+\end{question}
+
+\begin{answer}
+    The example in Question 3 Part ii also works for this one.
+\end{answer}

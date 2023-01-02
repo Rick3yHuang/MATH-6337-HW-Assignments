@@ -1,0 +1,133 @@
+\section{Question 1}
+
+\begin{question}
+    This question regards the definition of a normed space and that of a Banach
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Prove that $C[0,1]$ is a normed space and a Banach space.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First, I want to show $C[0,1]$ is a normed space. 
+        
+        Since $\forall f \in C[0,1]$, we have $\lVert f \rVert_{\infty} = \sup_{0 \leq x \leq 1} \lvert f(x) \rvert \geq 0$.
+        
+        $\lVert \lambda f \rVert_{\infty} = \sup_{0 \leq x \leq 1}\lvert \lambda f(x) \rvert = \lvert \lambda \rvert \sup_{0 \leq x \leq 1}\lvert f(x) \rvert = \lvert \lambda \rvert \lVert f \rVert_{\infty}$. 
+        
+        Let $f,g \in C[0,1]$, we have $\lVert f + g \rVert_{\infty} = \sup_{0 \leq x \leq 1}\lvert f(x) + g(x) \rvert \leq \sup_{0 \leq x \leq 1}\lvert f(x) \rvert + \lvert g(x) \rvert = \sup_{0 \leq x \leq 1}\lvert f(x) \rvert + \sup_{0 \leq x \leq 1}\lvert g(x) \rvert = \lVert f \rVert_{\infty} + \lVert g \rVert_{\infty}$.
+        
+        Next, we want to show it is also a Banach space. That is every Cauchy sequence in $C[0,1]$ converges.
+        
+        Let $\{f_n(x)\} \subseteq C[0,1]$ be a Cauchy sequence. Then, $\forall \epsilon > 0, \exists N \in \mathbb{N}, \; s/t,\;\forall m,n, \;\lvert f_n(x) - f_m(x) \rvert < \epsilon \; \forall x\in [0,1]$. Since every Cauchy sequence of numbers in $\mathbb{R}$ or $\mathbb{C}$ converges. Then, $\{f_n(x)\}$ converges pointwisely to $f(x)$. Then, with the same $\epsilon$ and $N$, in particular, we fix $n_0> N$, then $\forall m > N$, we have $\lvert f_{n_0}(x) - f_m(x) \rvert < \epsilon$, $\forall x \in [0,1]$.
+        
+        Next, if we take the limit as $m \to \infty$, we get
+        \begin{equation}
+            \lvert f_{n_0}(x) - f(x) \rvert < \epsilon, \; \forall x \in [0,1]
+        \end{equation}
+        Therefore, $\forall \epsilon, \exists N \in \mathbb{N},\; s/t\; \forall n > N, \; \lVert f_n - f \rVert_{\infty} = \sup_{0 \leq x \leq 1}\lvert f_{n}(x) \rvert < \epsilon$. Thus, $f_n(x) \xrightarrow{unif} f(x)$. Hence, $f(x)$ is continuous by the uniform convergence. Thus, $f(x)$ is indeed in $C[0,1]$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Prove that $C_2[0,1]$ is a normed space, but not a Banach space.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First, $\forall f \in C_2[0,1]$, we have $\lVert f \rVert_2 = \sqrt{\int_0^1{\lvert f(x) \rvert^2}\,dx} \geq 0$.
+        
+        Second, the homogenuity holds since we have $\lVert \lambda f \rVert_2 = \sqrt{\int_0^1{\lvert \lambda f(x) \rvert^2 \,dx}} = \sqrt{\lvert \lambda \rvert^2 \int_0^1 {\lvert f(x) \rvert^2}\,dx} = \lvert \lambda \rvert \sqrt{\int_0^1 {\lvert f(x) \rvert^2 \,dx}} = \lvert \lambda \rvert \lVert f \rVert_2$.
+        
+        Finally, the triangle inequality also holds because $\forall f, g \in C_[0,1]$, we have 
+        \begin{equation}
+            \lVert f + g \rVert_2 = \sqrt{\int_0^1{\lvert f(x) + g(x) \rvert^2} \,dx} \leq \sqrt{\int_0^1{\lvert f(x) \rvert^2}\,dx} + \sqrt{\int_0^1 \lvert g(x) \rvert^2 \,dx} = \lVert f \rVert_2 + \lVert g \rVert_2,
+        \end{equation}
+        by the Minkowski' Inequality for $p$-norm on $C[0,1]$. The properties above show that $C_2[0,1]$ is a normed space.
+        
+        To show that $C_2[0,1]$ is not a Banach space, we could try to prove a Cauchy sequence doesn't converge. Consider the function:
+        \begin{equation}
+            h_n =
+            \begin{cases}
+                0 & \text{if $x \in [0,\tfrac{1}{4} - \tfrac{1}{n}] \cup [\tfrac{1}{4} + \tfrac{1}{n}, 1]$}\\
+                nx + \dfrac{4-n}{4} & \text{if $x \in (\tfrac{1}{4}-\tfrac{1}{n}, \tfrac{1}{4})$}\\
+                1 & \text{if $x \in [\tfrac{1}{4}, \tfrac{3}{4}]$}\\
+                -nx +\dfrac{4+3n}{4} & \text{if $x \in (\tfrac{3}{4}, \tfrac{3}{4} + \tfrac{1}{n}]$},
+            \end{cases}
+        \end{equation}
+        The sequence $\{h_n\}$ is a Cauchy sequence, since
+        \begin{equation}
+            \begin{aligned}
+                \lVert h_n - h_m \rVert_2 &= \left(\int_0^1 \lvert h_n(x) - h_m(x) \rvert^2 \,dx\right)^{\frac{1}{2}} \text{ (WLOG let $m \leq n$)}\\
+                &=\left(\left(\int_{\frac{1}{4}-\frac{1}{m}}^{\frac{1}{4}} + \int_{\frac{3}{4}}^{\frac{3}{4} + \frac{1}{m}}\right) \lvert h_n(x) - h_m(x) \rvert^2\,dx \right)^{\frac{1}{2}}\\
+                &\leq \left(\left(\int_{\frac{1}{4}-\frac{1}{m}}^{\frac{1}{4}} + \int_{\frac{3}{4}}^{\frac{3}{4} + \frac{1}{m}}\right) \lvert h_n(x) \rvert^2\,dx \right)^{\frac{1}{2}} + \left(\left(\int_{\frac{1}{4}-\frac{1}{m}}^{\frac{1}{4}} + \int_{\frac{3}{4}}^{\frac{3}{4} + \frac{1}{m}}\right) \lvert h_m(x) \rvert^2\,dx \right)^{\frac{1}{2}}\\
+                & \leq 2\left(\left(\int_{\frac{1}{4}-\frac{1}{m}}^{\frac{1}{4}} + \int_{\frac{3}{4}}^{\frac{3}{4} + \frac{1}{m}}\right) \lvert h_m(x) \rvert^2\,dx \right)^{\frac{1}{2}}\\
+                & \leq \dfrac{4}{m} \xrightarrow{m,n \to \infty} 0
+            \end{aligned}
+        \end{equation}
+        Assume for contradiction that there exist $g \in C_2[0,1]$ such that $h_n \to g$ in the $2$-norm. Then, 
+        \begin{equation}
+            g(x) \neq
+            \begin{cases}
+                1 & \text{if $x \in (\tfrac{1}{4},\tfrac{3}{4})$}\\
+                0 & \text{if $x \in [0,\tfrac{1}{4})\cup(\tfrac{3}{4},1]$}
+            \end{cases}
+        \end{equation}
+        Let $x_0 \in (\tfrac{1}{4},\tfrac{3}{4})$, assume for contradiction that $\lvert 1 - g(x_0) \rvert > \delta > 0$. Since $g$ is continuous, then $\exists \epsilon$ such that $\forall x \in (x_0 - \epsilon, x_0+\epsilon) \subseteq (\tfrac{1}{4},\tfrac{3}{4})$, we have $\lvert 1 - g(x)\rvert^2 > \tfrac{\delta^2}{2}$.
+        
+        Then, $\lVert h_n - g \rVert_2 = (\int_0^1 \lvert h_n(x) - g(x) \rvert^2 \,dx)^{\frac{1}{2}} \geq (\int_{x_0-\epsilon}^{x_0+\epsilon} \lvert h_n(x) - g(x) \rvert^2 \,dx)^{\frac{1}{2}} = (\int_{x_0-\epsilon}^{x_0+\epsilon} \lvert 1 - g(x) \rvert^2 \,dx)^{\frac{1}{2}} > (\int_{x_0-\epsilon}^{x_0+\epsilon}\tfrac{\delta^2}{2}\,dx)^{\frac{1}{2}} = \delta\cdot\sqrt{\epsilon}$. Hence $\{h_n\}$ doesn't converge to $g$ in $2$-norm. Similarly, we could also prove that even if $g(x) \neq 0$ when $x \in [0,\tfrac{1}{4})\cup(\tfrac{3}{4},1]$, $\{h_n\}$ doesn't converge to $g$ in $2$-norm. Therefore $\{h_n\}$ doesn't converge in $C_2[0,1]$. This show that $C_2[0,1]$ is not a Banach space.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+    Let $w=\left\{w_n\right\}$ be a sequence of positive numbers and $1 \leq p<\infty$. Denote
+    $$
+    \left.\ell_w^p:=\left\{(a_1, a_2, a_3, \ldots\right): \sum w_j\left|a_j\right|^p<\infty\right\}
+    $$
+    and define a norm on $\ell_w^p$ by
+    $$
+    \|a\|_{\ell_w^p}=\left(\sum w_j\left|a_j\right|^p\right)^{\frac{1}{p}} .
+    $$
+    Prove that $\ell_w^p$ is a normed space and a Banach space.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First, $a_1 = (a_1^1,a_1^2,\cdots) \in \ell_w^p$, we have $\lVert a_1 \rVert_{\ell_w^p} = \left(\sum w_j\left|a_1^j\right|^p\right)^{\frac{1}{p}} \leq 0$ because $w$ is a sequence of positive numbers.
+        
+        Second, the homogenuity holds since we have $\lVert \lambda a_1 \rVert_{\ell_w^p} = \left(\sum w_j\left|\lambda a_1^j\right|^p\right)^{\frac{1}{p}} = \left(\lvert \lambda \rvert^p \sum w_j\left|a_1^j\right|^p\right)^{\frac{1}{p}} = \lvert \lambda \rvert \left(\sum w_j\left|a_1^j\right|^p\right)^{\frac{1}{p}}$.
+        
+        Finally, the triangle inequality also holds because $\forall a_1,a_2\in \ell_w^p$, we have 
+        \begin{equation}
+            \begin{aligned}
+                \lVert a_1+a_2 \rVert_{\ell_w^p} &= \left(\sum w_j\left|a_1^j+a_2^j\right|^p\right)^{\frac{1}{p}} \leq \left(\sum w_j\left|a_1^j\right|^p + w_j\left|a_2^j\right|\right)^{\frac{1}{p}}\\
+                &\leq \left(\sum w_j\left|a_1^j\right|^p\right)^{\frac{1}{p}} + \left(\sum w_j\left|a_2^j\right|^p\right)^{\frac{1}{p}}\\
+                &= \lVert a_1 \rVert_{\ell_w^p} + \lVert a_2 \rVert_{\ell_w^p},
+            \end{aligned}
+        \end{equation}
+        by the Minkowski' Inequality. The properties above show that $\ell_w^p$ is a normed space.
+        
+        Let $\{a_n\} \subseteq \ell_w^p$ be a Cuachy sequence. Then, $\forall \epsilon > 0, \exists N \in \mathbb{N},\; s.t\; \lVert a_m - a_n \rVert_{\ell_w^p} < \epsilon$. That is $\left(\sum w_j\left|a_m^j-a_n^j\right|^p\right)^{\frac{1}{p}} < \epsilon$. In particular, if we fix $j_0 \in \mathbb{N}$, we have $\lvert a_m^{j_0} - a_n^{j_0} \rvert \leq \left(\sum w_j\left|a_m^j-a_n^j\right|^p\right)^{\frac{1}{p}} < \epsilon$. Therefore, every sequence $\{a_n^{j_0}\}$ is Cauchy. Therefore, $\exists b^{j_0}\; s/t \; \lvert a_n^{j_0} - b^{j_0}\rvert < \epsilon$. Then, denote $b = (b^1,b^2,\cdots)$. We claim that $a_n \xrightarrow{n \to \infty} b$. Using the same $\epsilon$ and $N$, choose $n_0 > N$, then $\forall m > N$, we have $\left(\sum w_j\left|a_m^j-a_{n_0}^j\right|^p\right)^{\frac{1}{p}} < \epsilon$. Let $L_0 \in \mathbb{N}$, we have $\left(\sum_{j=1}^{L_0} w_j\left|a_m^j-a_{n_0}^j\right|^p\right)^{\frac{1}{p}} < \epsilon$. Taking limit as $m \to \infty$, we have
+        \begin{equation}
+            \left(\sum_{j=1}^{L_0} w_j\left|b^j-a_{n_0}^j\right|^p\right)^{\frac{1}{p}} < \epsilon
+        \end{equation}
+        Again, we could take limit as $L_0 \to \infty$, we have
+        \begin{equation}
+            \left(\sum_{j=1}^{\infty} w_j\left|b^j-a_{n_0}^j\right|^p\right)^{\frac{1}{p}} < \epsilon
+        \end{equation}
+        This shows $a_n \xrightarrow{n \to \infty} b$.
+        
+        Finally, We will prove $b^j \in \ell_w^p$. Indeed, since
+        \begin{equation}
+            \sum w_j\left|b^j + a_{n_0}^j - a_{n_0}^j\right|^p \leq \sum w_j\left|b^j - a_{n_0}^j\right|^p + \sum w_j\left|a_{n_0}^j\right|^p \leq \epsilon + \sum w_j\left|a_{n_0}^j\right|^p <\infty
+        \end{equation}
+        Thus, $\ell_w^p$ is a Banach space.
+    \end{proof}
+\end{answer}

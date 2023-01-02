@@ -1,0 +1,21 @@
+\section{Question 4}
+
+\begin{question}
+    Fix $1<p<\infty$ and let $f \in L^p([0, \infty])$. Prove that
+    $$
+    \lim _{R \rightarrow \infty} \frac{1}{R^{1-\frac{1}{p}}} \int_0^R f(t) d t=0
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Using the Hölder's Inequality, we could show that:
+        \begin{equation}
+            \int_0^R f(t) \,dt = \int_0^R \lvert f(t) \rvert \cdot 1 \,dt \leq \left(\int_0^R \lvert f(t) \rvert^p \right)^{\frac{1}{p}}\cdot \left(\int_0^R 1\right)^{1-\frac{1}{p}} = \lVert f \rVert_p \cdot R^{1-\frac{1}{p}}
+        \end{equation}
+        Therefore, $\frac{1}{R^{1-\frac{1}{p}}} \int_0^R f(t) d t = \lVert f \rVert_p = \int_0^R f(t) \,dt$. We could approximate $f$ using simple functions $\phi_n$ such that $\phi_n \nearrow f$. Therefore, we have
+        \begin{equation}
+            \lim _{R \rightarrow \infty} \int_0^R f(t) \,dt = \lim_{R \to \infty} \left(\lim_{n \to \infty} \int_0^R \phi_n(t) \,dt\right) = \lim_{n \to \infty} \left(\lim_{R \to \infty} \int_0^R \phi_n(t) \,dt\right) = \lim_{n \to \infty} 0 = 0
+        \end{equation}
+    \end{proof}
+\end{answer}

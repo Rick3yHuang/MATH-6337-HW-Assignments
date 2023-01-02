@@ -1,0 +1,68 @@
+\section{Question 2}
+
+\begin{question}
+    Read subsection 1.1 in the textbook (pp 15-21). Note in particular the definition of a metric space, and the corresponding definitions for matric spaces of notions which were discussed in class for normed spaces.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+   Prove that every normed space is a metric space.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let X be a normed space, we could define a function on $X \times X$ by $(a, b) \rightarrow\|a-b\|$. We claim this is a metric space.
+
+        First, since $X$ is a normed space, then $d(x,y) = \lVert x - y \rVert geq 0$, and $d(x,y) = \lVert x - y \rVert = 0$ if and only if $x -y = 0$, which means $x = y$.
+        
+        Second, $d(x,y) = \lVert x - y \rVert = \lVert (-1)\cdot (y-x) \rVert = \lvert -1 \rvert \lVert y - x \rVert = \lVert y - x \rVert = d(y,x)$, by the homogenuous property of the normed space..
+        
+        Finally, $d(x,y) = \lVert x - y \rVert = \lVert (x-z)-(z-y)\rVert \leq \lVert x - z \rVert + \lVert z - y \rVert = d(x,z)+ d(z,y)$ by the triangle inequality of the normed space.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Give 3 different examples of metric spaces which are not normed spaces (note, in particular, that a metric space need not necessarily be a vector space).
+\end{question}
+
+\begin{answer}
+    Example 1: Let $X = \{x_1,x_2, \cdots, x_n\}$ for some $n$, then let $x,y \in X$, the metric:
+    \begin{equation}
+        d(x,y) = 
+        \begin{cases}
+            0 & x = y\\
+            1 & \text{Otherwise.}
+        \end{cases}
+    \end{equation}
+    defines a metric space but not a normed space since the homogenuous property is not satisfied.
+    
+    For the same reason, we have the example 2.
+    
+    Example 2: 
+    Let $X = \mathbb{R}$, then let $x,y \in X$, the metric:
+    \begin{equation}
+        d(x,y) = \left|e^x-e^y\right|
+    \end{equation}
+    defines a metric space but not a normed space.
+    
+    Also because the homogenuous property doesn't hold, the example 3 is a metric space but not a normed space with the following metric:
+    
+    Let $X = \mathbb{R}$, then let $x,y \in X$, define $d(x, y)=\frac{|x-y|}{1+|x-y|}$
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Let $B$ be a Banach space and $E \subset B$. Prove that $E$ is closed in $B$ if and only if it is a complete metric space with the metric induced by the norm of $B$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        First assume E be a closed, let $\{x_n\} \subseteq E$ be a Cauchy sequence, then since $E \subset B$, $\{x_n\} \subseteq B$. Because $B$ is a Banach space, then $x_n \xrightarrow{n \to \infty} x$ for some $x \in B$. Since $E$ is closed, then $x \in E$. Thus, $E$ is a complete metric space.
+    
+        Next assume $E$ is a complete metric space. Let $\{x_n\} \subseteq E$ be a convergent sequence, so we know $\{x_n\}$ is Cauchy. Then since $E$ is a complete metric space, $\exists x \in E \; s/t \; x_n \xrightarrow{n \to \infty} x$. Thus, every convergent sequence in $E$ converge to an element in $E$. This implies that $E$ is closed.
+    \end{proof}
+\end{answer}

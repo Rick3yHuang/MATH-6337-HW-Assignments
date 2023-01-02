@@ -1,0 +1,43 @@
+\section{Question 2}
+
+\subsection{Part i}
+
+\begin{question}
+    Show that if $E \subset \mathbb{R}$ is measurable and $f: E \rightarrow \mathbb{R}$ is monotone increasing on $E$, then $f$ is measurable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $F = \{f > a\}$, for an arbitrary $a$. Then, let $x \in F$, we have $f(x) > a$. Let $y > x \in F$, we know that $f(y) \geq f(x) > a$ since $f$ is monotone increasing on $E$. Hence, $F = \bigcup_{x\in F}[x,\infty)$. Therefore, $F = \emptyset, \mathbb{R}, [\inf F, \infty)$, or $(\inf F, \infty)$. Because $\emptyset$, $\mathbb{R}$, and $(\inf F, \infty)$ are open, then they are all measurable. Since $(-\infty, \inf F)$ is open and therefore measurable, then $[\inf F, \infty) = (-\infty, \inf F)^c$ is measurable. Hence, $F = \{f > a\}$ is measurable for all $a$, so that $f$ is measurable.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Given $E \subset \mathbb{R}^d$, prove that $f: E \rightarrow \mathbb{R}$ is measurable if and only if $\{f>r\}$ is measurable for each rational number $r \in \mathbb{Q}$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        $(\Rightarrow):$ Assume $f$ is measurable, then for all $a \in \mathbb{R}$, $\{f > a\}$ is measurable by definition. Since $r \in \mathbb{Q} \subset \mathbb{R}$, then $\{f > r\}$ is measurable for all $r \in \mathbb{Q}$.
+        
+        $(\Leftarrow):$ Assume $\{f > r\}$ is measurable for all $r \in \mathbb{Q}$. Let $a \in \mathbb{R}$, if $a \in \mathbb{Q}$, we are done. otherwise, because $\mathbb{Q}$ is dense in $\mathbb{R}$, we could find a sequence of rational number $\{r_n\}_n \subset \mathbb{Q}$ such that $\lim_{n \to \infty} = a$. therefore, $\{f > a\} = \bigcup_{n \in \mathbb{N}}\{f > r_n\}$. Because $\{f > r_n\}$ is measurable for all $n \in \mathbb{N}$ by assumption, $\{f > a\}$ is measurable by the closure of $\sigma$-algebra. Hence $f$ is measurable.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Suppose that $f: \mathbb{R}^d \rightarrow \mathbb{R}$ is measurable, and $\phi: \mathbb{R}^d \rightarrow \mathbb{R}^d$ is a bijection such that $\phi^{-1}$ is Lipschitz. Prove that $f \circ \phi$ is measurable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $a \in \mathbb{R}$. By assumption, we have $\{f > a\}$ is measurable. Then,
+        \begin{equation}
+            \{f \circ \phi > a\} = \phi^{-1}(f^{-1}(a,\infty]) = \phi^{-1}(\{f > a\})
+        \end{equation}
+        by definition of $\{f > a\}$. Therefore, since $\phi^{-1}$ is a Lipchitz function and $\{f > a\}$ measurable, we know that $\{f \circ \phi > a\} = \phi^{-1}(\{f > a\})$ is measurable. Thus, $f \circ \phi$ is measurable.
+    \end{proof}
+\end{answer}

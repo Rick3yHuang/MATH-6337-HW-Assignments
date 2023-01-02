@@ -1,0 +1,107 @@
+\section{Question 1}
+
+\begin{question}
+    This question regards basic properties of the spaces $L^p(E)$
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Let $E \subset \mathbb{R}^d$ be a measurable set. Prove that $L^{\infty}(E)$ is a Banach space.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Assume $\{f_n\} \subseteq L^{\infty}(E)$ to be a Cauchy sequence. Let $\varepsilon > 0$. Then for $k \in \mathbb{N}$, let $n_k$ be such that:
+        \begin{equation}
+            \lVert f_{n_{k+1}} - f_{n_k} \rVert_{L^{\infty}(E)} = \esssup_{x\in E} (\lvert f_{n_{k+1}}(x) - f_{n_k}(x) \rvert) < \tfrac{\varepsilon}{2}
+        \end{equation}
+        Since $\lvert f_{n_{k+1}} - f_{n_k} \rvert \leq \esssup_{x\in E} (\lvert f_{n_{k+1}} - f_{n_k} \rvert)$ by definition, we have for all $N \in \mathbb{N}$
+        \begin{equation}
+            \sum_{k=1}^{N} \lvert f_{n_{k+1}} - f_{n_k} \rvert < \sum_{k=1}^{\infty} \lvert f_{n_{k+1}} - f_{n_k} \rvert \leq \sum_{k=1}^{\infty} \lVert f_{n_{k+1}} - f_{n_k} \rVert_{L^{\infty}(E)} < \sum_{k = 1}^{\infty} \tfrac{\varepsilon}{2^k} = \varepsilon.
+        \end{equation}
+        Notice that by triangular inequality, we know $\lvert f_{n_N} - f_{n_1} \rvert \leq \sum_{k=1}^{N} \lvert f_{n_{k+1}} - f_{n_k} \rvert < \varepsilon$ for all $N \in \mathbb{N}$. Also, since $f_{n_1}(x)$ is a fixed number for a given $x$, then $f_{n_N}(x)$ converges a.e. on $E$.
+        
+        Given $\varepsilon > 0$, there exists $N$ such that $\forall n,m > N$, we have 
+        \begin{equation}
+            \lVert f_m(x) - f_n(x) \rVert_{L^{\infty}(E)} < \varepsilon
+        \end{equation}
+        Fix such $m_0 > N$ for $k > N$, as $n_k > k$, we have
+        \begin{equation}\label{eqn:eqn4}
+            \lVert f_{m_0}(x) - f_{n_k}(x) \rVert_{L^{\infty}(E)} < \varepsilon
+        \end{equation}
+        Then, let $f = \lim_{k \to \infty} f_{n_k}$ a.e. on $E$.
+        \begin{equation}
+            \lVert f_{m_0}(x) - f(x) \rVert_{L^{\infty}(E)} = \inf\{M \geq 0 \mid \lim_{k \to \infty}\lvert f_{m_0}(x) - f_{n_k}(x) \rvert \leq M \text{ a.e.}\}
+        \end{equation}
+        Because $\lim_{k \to \infty} \lvert f_{m_0}(x) - f_{n_k}(x)\rvert < \epsilon$ by Equation \ref{eqn:eqn4},  we know $\lVert f_{m_0}(x) - f(x) \rVert_{L^{\infty}(E)} < \varepsilon$.
+        
+        Then let $\varepsilon = 1$, we have $\lvert f_{m_0}(x) - f(x) \rvert_{L^{\infty}(E)} < 1$. Then,
+        \begin{equation}
+            \lvert \lVert f_{m_0} \rVert_{L^{\infty}(E)} - \lVert f(x) \rVert_{L^{\infty}(E)} \rvert < \lVert f_{m_0} - f \Vert_{L^{\infty}(E)} < 1
+        \end{equation}
+        , which implies that
+        \begin{equation}
+            \lVert f \rVert_{L^{\infty}(E)} <  1 + \lVert f_{m_0} \rVert_{L^{\infty}(E)} < \infty
+        \end{equation}
+        since $f_{m_0} \in L^{\infty}(E)$ therefore bounded. Hence, $f$ is bounded, therefore $f \in L^{\infty}(E)$. Since we pick $m_0 > N$ arbitrarily, we know that $\forall m > N$, $\lVert f_m - f \rVert_{L^{\infty}(E)} < \varepsilon$. Hence, $f_m$ converges to $f$ in $L^{\infty}(E)$. This shows that $L^{\infty}(E)$ is a Banach space.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Let $E$ be a measurable subset of $\mathbb{R}^d$, and fix $1 \leq p<q \leq \infty$. Prove the following statements.
+\end{question}
+
+\subsubsection{Part a}
+
+\begin{question}
+    If $0<|E|<\infty$, then $L^q(E) \subseteq L^p(E)$ and
+    $$
+    \|f\|_p \leq|E|^{\frac{1}{p}-\frac{1}{q}}\|f\|_q, \quad \forall f \in L^p(E) .
+    $$
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $g \in L^q(E)$. Then, by Hölder's Inequality,
+        \begin{equation}
+            \left(\int_E \lvert g \rvert^p\right)^{\frac{1}{p}} = \left(\int_E 1 \cdot \lvert g \rvert^p\right)^{\frac{1}{p}} \leq \left(\int_E \lvert g \rvert^{p\cdot\frac{q}{p}}\right)^{\frac{p}{q}\cdot\frac{1}{p}} \cdot \left(\int_E 1\right)^{\frac{q-p}{q}\cdot\frac{1}{p}} = \lVert g \rVert_q \cdot \sqrt[qp]{\lvert E \rvert^{q-p}} < \infty
+        \end{equation}
+        since $\lvert E \rvert < \infty$.
+        
+        Now, let $f \in L^p(E)$. Then, by Hölder's Inequality, we know
+        \begin{equation}
+            \left(\int_E \lvert f \rvert^p\right)^{\frac{1}{p}} = \left(\int_E 1 \cdot \lvert f \rvert^p\right)^{\frac{1}{p}} \leq \left(\int_E \lvert f \rvert^{p\cdot\frac{q}{p}}\right)^{\frac{p}{q}\cdot\frac{1}{p}} \cdot \left(\int_E 1\right)^{\frac{q-p}{q}\cdot\frac{1}{p}} = \lVert f \rVert_q \cdot \lvert E \rvert^{\frac{1}{p} - \frac{1}{q}}
+        \end{equation}
+    \end{proof}
+\end{answer}
+
+\subsubsection{Part b}
+
+\begin{question}
+    If $|E|=\infty$, then $L^p(E)$ is not contained in $L^q(E)$, and $L^q(E)$ is not contained in $L^p(E)$
+\end{question}
+
+\begin{answer}
+    
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+    Prove that $L^p([0,1])$ is separable for all $1 \leq p<\infty$ but $L^{\infty}([0,1])$ is not separable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $\mathcal{P}([0,1]) = \{f: [0,1] \to \mathbb{R} \mid f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_n x^n, \text{ for } a_n\in \mathbb{Z} \}$. This set is countablely infinite. Also, we proved in class that $\mathcal{P}[0,1]$ is dense in $L^{p}([0,1])$. Hence, $L^p([0,1])$ is separable by definition.
+        
+        For $L^{\infty}([0,1])$, we want to show that every dense set in $L^{\infty}(E)$ is uncountable. Let $A = \left\{\mathbb{1}_{(0, t)}\mid t \in(0,1)\right\}$. We could see that this is a uncountable set and for any $\mathbb{1}_{(0,t_1)}$ and $\mathbb{1}_{(0,t_2)}$ the distance between them are:
+        \begin{equation}
+            \lvert \mathbb{1}_{(0,t_1)} - \mathbb{1}_{(0,t_2)} \rvert_{L^{\infty}(E)} = 1
+        \end{equation}
+        Therefore, we could find a uncountable collection of balls $\{B_{\mathbb{1}_{(0,t)}}(\tfrac{1}{3})\}$. Then, by definition, we know that any dense subset of $L^{\infty}(E)$ would have at least one element from each of the balls in the collection $\{B_{\mathbb{1}_{(0,t)}}(\tfrac{1}{3})\}$, therefore any dense subset will be uncountable. Hence, we know that $L^{\infty}(E)$ is not separable.
+    \end{proof}
+\end{answer}

@@ -1,0 +1,46 @@
+\section{Question 6}
+
+\begin{question}
+    [15 points] Note that functions in this problem are complex-valued. Let $W(x)=\max \{1-|x|, 0\}$ be the "hat function" on $[-1,1]$. Given $f \in L^1(\mathbb{R})$, let
+    $$
+    g(y)=\int_{-\infty}^{\infty} f(t) e^{-2 \pi i y t} d t .
+    $$
+    Prove that $g$ is bounded on $\mathbb{R}$, and for a.e. $x \in \mathbb{R}$ we have
+    $$
+    \int_{-\infty}^{\infty} f(y)\left(\frac{\sin \pi(x-y)}{\pi(x-y)}\right)^2 d y=\int_{-1}^1 g(t)(1-|t|) e^{2 \pi i t x} d t .
+    $$
+    Hint: $\int_{-\infty}^{\infty} W(t) e^{2 \pi i y t} d t=\left(\frac{\sin \pi y}{\pi y}\right)^2$ by direct calculation (which you may assume without proof)
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Since $f \in L^1(\mathbb{R})$, then $\lVert f \rVert_1 < \infty$. Let $y \in \mathbb{R}$, we have:
+        \begin{equation}
+            \begin{aligned}
+                \lvert g(y) \rvert = &\left\lvert \int_{-\infty}^{\infty} f(t) e^{-2\pi iyt} \,dt \right\rvert \leq \int_{-\infty}^{\infty} \lvert f(t)e^{-2 \pi iyt} \rvert \,dt\\
+                = &\int_{-\infty}^{\infty} \lvert f(t) \rvert \lvert \cos(-2\pi yt) + i\sin(-2\pi yt) \rvert \,dt \leq \int_{-\infty}^{\infty} \lvert f(t) \rvert \,dt = \lVert f \rVert_1 < \infty
+            \end{aligned}
+        \end{equation}
+        Therefore, $g$ is bounded on $\mathbb{R}$.
+        
+        Using the hint, we can rewrite the equation
+        \begin{equation}
+            \begin{aligned}
+                \int_{-\infty}^{\infty} f(y)\left(\frac{\sin \pi(x-y)}{\pi(x-y)}\right)^2 \,d y = &\int_{-\infty}^{\infty}f(y)\int_{-\infty}^{\infty}W(t)e^{2\pi i (x-y)t}\,dt\,dy
+            \end{aligned}
+        \end{equation}
+        Since functions are complex-valued, we want to check
+        \begin{equation}\label{eqn:eqn26}
+            \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}\left|f(y) W(t) e^{2 \pi i(x-y) t}\right| d t d y=\int_{-\infty}^{\infty}|f(y)| \int_{-1}^1(1-|t|) \lvert e^{2\pi i (x-y)t} \rvert d t d y \leq \lVert f(y) \rVert_1 < \infty
+        \end{equation}
+        by using the Tonelli's Theorem, since $|f(y) W(t) e^{2 \pi i(x-y) t}|$ is measurable. Then, because of Equation \ref{eqn:eqn26}, we know that $|f(y) W(t) e^{2 \pi i(x-y) t}|$ is integrable, so we can apply the Fubini's Theorem, so that:
+        \begin{equation}
+            \begin{aligned}
+                \int_{-\infty}^{\infty} f(y)\left(\frac{\sin \pi(x-y)}{\pi(x-y)}\right)^2 \,d y &\int_{-\infty}^{\infty}f(y)\int_{-\infty}^{\infty}W(t)e^{2\pi i (x-y)t}\,dt\,dy\\
+                = &\int_{-\infty}^{\infty}f(y) e^{-2\pi iyt}\left(\int_{-1}^{1} (1-\lvert t \rvert) e^{2\pi ixt} \,dt\right)\,dy\\
+                = &\int_{-1}^{1} (1-\lvert t \rvert)e^{2\pi ixt}\int_{-\infty}^{\infty}f(y)e^{-2\pi iyt}\,dy\,dt\\
+                = &\int_{-1}^{1}(1-\lvert t \rvert)e^{2\pi ixt}g(y) \,dt
+            \end{aligned}
+        \end{equation}
+    \end{proof}
+\end{answer}

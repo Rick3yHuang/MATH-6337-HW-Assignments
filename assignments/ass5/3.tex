@@ -1,0 +1,45 @@
+\section{Question 3}
+
+\begin{question}
+   Let $E \subset \mathbb{R}^d$ be a measurable set such that $|E|>0$, and assume that $f$ : $E \rightarrow[-\infty, \infty]$ is a measurable function on $E$ which is finite a.e.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Show that there exists a measurable set $A \subseteq E$ such that $|A|>0$ and $f$ is bounded on $A$.
+\end{question}
+
+\begin{answer}
+    Claim: The set $A = \{\lvert f \rvert < 1\}$ is a measurable subset of $E$, and $f$ is bounded on $A$.
+    
+    \begin{proof}
+        Because $f$ is measurable, then $\lvert f \rvert$ is also measurable. Hence, $\{\lvert f \rvert < a\}$ is measurable for all $a \in \mathbb{R}$. In particular, ${\lvert f \rvert < 1}$ is measurable. Then, since $\{\lvert f \rvert < 1\} = \{x \in E \mid \lvert f(x) \rvert < 1\}$. Hence, $f$ is bounded by $[-1,1]$ on $A$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Assume that $|E|<\infty$. Given any $\epsilon>0$ show that there exists a closed set $F \subset E$ such that $|E-F|<\epsilon$ and $f$ is bounded on $F$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        As proved in the part i, we could change $\{\lvert f \rvert < 1\}$ to $E_k = \{\lvert f \rvert < k\}$ which is also measurable and $f$ is bounded by $[-k,k]$ on $E_k$. Also, $E_1 \subset E_2 \subset \cdots$. By definition, we could see that $E = \bigcup_{k \in N}\{\lvert f \rvert < k\}$. From the continuity from below, we know that $\lvert E \rvert = \lim_{k \to \infty}\lvert E_k \rvert$. Then, for all $\varepsilon > 0$, we could find a $k \in \mathbb{N}$, such that $\lvert E \rvert - \lvert E_k \rvert < \varepsilon$. Because $E_k \subset E$, we could change it to $\lvert E - E_k \rvert < \varepsilon$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Assume that $|E|<\infty$. For each $n \in \mathbb{N}$ let $f_n: E \rightarrow[-\infty, \infty]$ be a measurable function, and suppose that for almost every $x \in E$ we have
+    $$
+    M_x=\sup _{n \in N}\left|f_n(x)\right|<\infty .
+    $$
+    Prove that for each $\epsilon>0$, there exists a closed set $F \subset E$ and a finite constant $M$ such that $|E-F|<\epsilon$ and $\left|f_n(x)\right| \leq M$ for all $x \in F$ and $n \in N$
+\end{question}
+
+\begin{answer}
+    
+\end{answer}

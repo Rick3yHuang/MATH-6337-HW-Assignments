@@ -1,0 +1,62 @@
+\section{Question 3}
+
+\begin{question}
+    This question regards the definitions of open and closed sets.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    Is the set
+    $$
+    \left\{f \in C[0,1]: f\left(\frac{1}{2}\right)=0\right\}
+    $$
+    closed in $C[0,1] ?$ Is it closed in $C_1[0,1] ?$
+\end{question}
+
+\begin{answer}
+    Claim: This set is closed in $C[0,1]$, but is not closed in $C_1[0,1]$.
+    \begin{proof}
+        Let $\{f_n\}$ be a convergent sequence in $C[0,1]$. Then, $\forall \epsilon, \exists n > N \in \mathbb{N}, \; s/t, \; \exists f, \; s/t \; \lVert f_n - f \lVert_{\infty} < \epsilon$. Then, for all $x \in [0,1]$, $\lvert f_n(x) - f(x) \rvert < \epsilon$. In particular, $\lvert f_n(\tfrac{1}{2}) - f(\tfrac{1}{2}) \rvert < \epsilon \Rightarrow \lvert 0 - f(\tfrac{1}{2}) \rvert < \epsilon$, which means $f(\tfrac{1}{2}) = 0$. Therefore the limit $f \in C[0,1]$. Hence, this set is closed in $C[0,1]$.
+        
+        Let the function $f_n$ be:
+        \begin{equation}
+            f_n(x) = 
+            \begin{cases}
+                1 & x \in [0,\tfrac{1}{2} - \tfrac{1}{n}] \cup [\tfrac{1}{2} + \tfrac{1}{n}, 1]\\
+                -nx + \tfrac{n}{2} & x \in (\tfrac{1}{2} - \tfrac{1}{n}, \tfrac{1}{2}]\\
+                nx - \tfrac{n}{2} & x \in (\tfrac{1}{2}, \tfrac{1}{2} + \tfrac{1}{n})
+            \end{cases}
+        \end{equation}
+        We claim that the continuous function $f(x) = 1$ in $C_1[0,1]$ is the limit of $\{f_n\}$. Indeed, $\forall \epsilon > 0$, choose $N = \tfrac{2}{\epsilon}$ such that $\forall n > N$, we have $\lVert f_n-f \rVert_1 = \int_0^1 \lvert f_n(x) - 1\rvert \,dx = \int_{\frac{1}{2} - \frac{1}{n}}^{\frac{1}{2}} \lvert -nx + \tfrac{n}{2} - 1 \rvert \,dx + \int_{\frac{1}{2}}^{\frac{1}{2} + \frac{1}{n}} \lvert nx - \tfrac{n}{2} - 1 \rvert \,dx \leq \tfrac{2}{n} < \tfrac{2}{N} = \epsilon$. However, $f \notin \left\{f \in C[0,1]: f\left(\frac{1}{2}\right)=0\right\}$. Hence, $\left\{f \in C[0,1]: f\left(\frac{1}{2}\right)=0\right\}$ is not closed in $C_1[0,1]$
+    \end{proof}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    Is the set
+    $$
+    \{f \in C[0,1]: f(x) \geq 0, \quad \forall x \in[0,1]\} \text {. }
+    $$
+    closed in $C[0,1] ?$ Is it closed in $C_1[0,1] ?$
+\end{question}
+
+\begin{answer}
+    Claim: this set is closed both in $C[0,1]$ and $C_1[0,1]$.
+    \begin{proof}
+        Using the similar proof in the part i, we could prove that this set is closed in $C[0,1]$ because the uniform convergence implies the pointwise convergence.
+        
+        For the $C_1[0,1]$ case, let a continuous function $f \notin \{f \in C[0,1]: f(x) \geq 0, \forall x \in[0,1]\}$. Then, $\exists x_0 \in [0,1]$ such that $f(x) < 0$. That is $\exists \epsilon > 0,$ we have $f(x_0) < -\epsilon$. Since $f$ is continuous then $\exists \delta$ such that $\forall x \in [x_0 - \delta, x_0 + \delta]$, we have $f(x) < -\tfrac{\epsilon}{2}$. Then if $g \in \{f \in C[0,1]: f(x) \geq 0, \forall x \in[0,1]\}$, then $\lVert g - f \rVert_1 = \int_0^1 \lvert (g-f)(x) \rvert\,dx > \int_{x_0-\delta}^{x_0+\delta}\lvert (g-f)(x) \rvert \,dx \geq \int_{x_0-\delta}^{x_0+\delta}\tfrac{\epsilon}{2}\,dx = \delta\epsilon$. Therefore, $\forall f \in \{f \in C[0,1]: f(x) \geq 0, \forall x \in[0,1]\}^c$, there is an $\delta\epsilon$ as picked above, such that $B_{f}(\delta\epsilon) \subseteq \{f \in C[0,1]: f(x) \geq 0, \forall x \in[0,1]\}^c$. Then, $\{f \in C[0,1]: f(x) \geq 0, \forall x \in[0,1]\}^c$ is open, i.e. $\{f \in C[0,1]: f(x) \geq 0, \forall x \in[0,1]\}$ is closed in $C_1[0,1]$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   Let $A \subseteq C[0,1]$. Prove that if $A$ is closed in $C_1[0,1]$ then it is closed in $C_2[0,1]$, and that if $A$ is open in $C_1[0,1]$ then it is open in $C_2[0,1]$.
+\end{question}
+
+\begin{answer}
+    
+\end{answer}

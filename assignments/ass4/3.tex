@@ -1,0 +1,28 @@
+\section{Question 3}
+
+\begin{question}
+    Let $A \subseteq \mathbb{R}^d$. Show that $A$ is measurable if and only if for every $\epsilon>0$ there exists a Lebesgue measurable set $E \subseteq \mathbb{R}^d$ so that
+    $$
+    |A \triangle E|_e<\epsilon \text {. }
+    $$
+    (Here $A \triangle E=(A-E) \cup(E-A)$ ).
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        ($\Rightarrow$): Let $\varepsilon > 0$. Assume $A$ is measurable, then there exists an open set $U$ such that $\lvert U - A\rvert_e < \varepsilon$ by definition. Then $\lvert A \triangle U \rvert_e = \lvert (A - U) \cup (U - A) \lvert_e = \lvert U - A \rvert_e < \varepsilon$.
+        
+        ($\Leftarrow$): Let $\varepsilon > 0$. Assume, there exists some Lebesgue measurable set $E \subseteq \mathbb{R}^d$ such that $\lvert A \triangle E \rvert_e < \tfrac{\varepsilon}{4}$. Because $E$ is measurable, then by definition there exist some open set $F$ such that $F \supseteq E$ such that $\lvert F - E \rvert < \tfrac{\varepsilon}{4}$. Because $A \triangle E \subseteq \mathbb{R}^d$, then there exist an open set $G \supseteq A \triangle E$ such that $\lvert G \rvert \leq \lvert A \triangle E \rvert_e + \tfrac{\varepsilon}{4} < \tfrac{\varepsilon}{4} + \tfrac{\varepsilon}{4} = \tfrac{\varepsilon}{2}$.
+        
+        Let $H = F \cup G$, then $H \supseteq A \cup E \supseteq A$, and $H -A = (H - E) \cup (A \triangle E)$ then
+        \begin{equation}
+            \begin{aligned}
+                \lvert H - A \rvert_e & \leq \lvert H - E \rvert_e + \lvert A \triangle E\rvert_e\\
+                &\leq \lvert F - E \rvert_e + \lvert G - E \rvert_e + \lvert A \triangle E \rvert_e \text{ (by subadditivity)}\\
+                &\leq \tfrac{\varepsilon}{4} + \lvert G \rvert_e + \tfrac{\varepsilon}{4} \\
+                &\leq \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon
+            \end{aligned}
+        \end{equation}
+        $H$ is open since $F$ and $G$ are both open. Then, $A$ is measurable.
+    \end{proof}
+\end{answer}

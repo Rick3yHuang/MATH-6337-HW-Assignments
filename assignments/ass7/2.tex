@@ -1,0 +1,61 @@
+\section{Question 2}
+
+\begin{question}
+   In each of the following compute the required limit. Justify all steps.
+\end{question}
+
+\subsection{Part i}
+
+\begin{question}
+    $\lim _{n \rightarrow \infty} \int_0^1 \frac{n e^x}{1+n^2 \sqrt{x}} d x$
+\end{question}
+
+\begin{answer}
+    \begin{equation}
+        \lim_{n \to \infty}\frac{n e^x}{1+n^2 \sqrt{x}} = \lim_{n \to \infty} \tfrac{\frac{e^x}{n}}{\frac{1}{n^2} + \sqrt{x}} = 0
+    \end{equation}
+    Also, since 
+    \begin{equation}
+        \left\lvert\frac{n e^x}{1+n^2 \sqrt{x}}\right \rvert \leq \frac{n e^x}{n^2 \sqrt{x}} = \frac{e^x}{n \sqrt{x}} \leq \tfrac{e^x}{\sqrt{x}} \leq \tfrac{e^x}{x}
+    \end{equation}
+    for $x \in [0,1]$. Hence, if we let $g(x) = \tfrac{e^x}{x}$ for $x \in (0,1]$ and let $g(x) = 1$ for $x = 0$ because $\lim_{x \to \infty}\tfrac{e^x}{x} = 1$. Therefore, since $g(x)$ is continuous on $(0,1]$, we know that $g$ is Lebesgue integrable over $[0,1]$, and $\lvert f_n(x)\rvert \leq g(x)$, then by D.C.T., we know that
+    \begin{equation}
+        \lim _{n \rightarrow \infty} \int_0^1 \frac{n e^x}{1+n^2 \sqrt{x}} d x = \int_0^1 \lim_{n \to \infty}\frac{n e^x}{1+n^2 \sqrt{x}} = 0
+    \end{equation}
+\end{answer}
+
+\subsection{Part ii}
+
+\begin{question}
+    $\lim _{n \rightarrow \infty} \int_0^1 n \log \left(1+\frac{x^3}{n}\right) d x$
+\end{question}
+
+\begin{answer}
+        Let $f_n(x) = n \log \left(1+\frac{x^3}{n}\right)$, and let $f = \lim_{n\to \infty} f_n$. Then,
+        \begin{equation}
+                f(x) = \lim_{n\to \infty} \tfrac{\log\left(1+\frac{x^3}{n}\right)}{\frac{1}{n}}
+                = \lim_{n\to\infty}\tfrac{\frac{x^3}{n^2\left(\frac{x^3}{n}+1\right)}}{\frac{1}{n^2}}
+                = \lim_{n\to\infty}\frac{x^3 n}{n+x^3}
+                = \lim_{n\to\infty}\frac{x^3}{1+\frac{x^3}{n}}
+                = x^3
+        \end{equation}
+        Also, notice that
+        \begin{equation}
+            f_n(x) \leq n \cdot \tfrac{x^3}{n} = x^3 = g(x)
+        \end{equation}
+        and since $g(x)$ is continuous on $[0,1]$, therefore Lebesgue integrable. By the D.C.T., we know that
+        \begin{equation}
+            \lim _{n \rightarrow \infty} \int_0^1 n \log \left(1+\frac{x^3}{n}\right) d x = \int_0^1 \lim_{n \to \infty} f_n(x) \,dx = \int_0^1 f(x) \,dx = \int_0^1 x^3 \,dx = \tfrac{1}{4}
+        \end{equation}
+        because $x^3$ is continuous on $[0,1]$ so that the Lebesgue integral equals to the Riemann integral.
+\end{answer}
+
+\subsection{Part iii}
+
+\begin{question}
+   $\sum_{n=0}^{\infty} \frac{1}{n !} \int_1^2 \log ^n (x) d x$
+\end{question}
+
+\begin{answer}
+   Let $f_n(x) = \tfrac{1}{n!} \log^n(x)$.
+\end{answer}

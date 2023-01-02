@@ -1,0 +1,38 @@
+\section{Question 7}
+
+\begin{question}
+    [10 points] Let A be a measurable subset of $[0,1]$.
+\end{question}
+
+\subsection{Part a}
+
+\begin{question}
+    Prove that if $|A|>2 / 3$, then $A$ contains an arithmetic progression of length 3 , that is, prove that there are $a, d \in \mathbb{R}$ such that $a, a+d, a+2 d \in$ $A$.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        In order to prove such $a,d \in \mathbb{R}$ exists that $a, a+d, a+2d \in A$, we want to show that $\mathbb{1}_A(a), \mathbb{1}_A(a+d),\mathbb{1}_A(a+2d) = 1$. if we take $h = \tfrac{1}{3}$, we want to show there exists $a\in [0,1]$ such that $f(a) = \mathbb{1}_A(a) + \mathbb{1}_A(a+\tfrac{1}{3}) + \mathbb{1}_A(a+\tfrac{2}{3}) = 3$. Also, since $A \subset E$, we know that ensuring $a+\tfrac{2}{3} \in A$, $a$ should at least in $[0,\tfrac{1}{3}]$. Then, since $f$ is simple, then it is measurable and integrable. Then
+        \begin{equation}
+            \begin{aligned}
+                \int_0^{\frac{1}{3}} f(a) \,da =&\int_0^{\frac{1}{3}} \mathbb{1}_A(a)\,da + \int_0^{\frac{1}{3}} \mathbb{1}_A(a+\tfrac{1}{3})\,da +\int_0^{\frac{1}{3}} \mathbb{1}_A(a+\tfrac{2}{3})\,da\\
+                = &\int_0^{\frac{1}{3}} \mathbb{1}_A(a)\,da + \int_{\frac{1}{3}}^{\frac{2}{3}}\mathbb{1}_A(a)\,da + \int_{\frac{2}{3}}^{1}\mathbb{1}_A(a) \,da = \int_0^{1} \mathbb{1}_A(a) = \lvert A \rvert > \tfrac{2}{3}
+            \end{aligned}
+        \end{equation}
+        Now, suppose by contradiction that there is no such $a$ exists, then we know that $f(a) \leq 2$ for all $a \in [0,\tfrac{1}{3}]$. then, we would have 
+        \begin{equation}
+             \int_0^{\frac{1}{3}} f(a) \,da \leq  \int_0^{\frac{1}{3}} 2 \,da = \tfrac{2}{3}
+        \end{equation}
+        This contradicts to the previous equation that $ \int_0^{\frac{1}{3}} f(a) \,da > \tfrac{2}{3}$. Hence, there must exist $a \in [0,\tfrac{1}{3}] \subset [0,1]$ such that $a, a+d,a+2d \in A$ for $d = \tfrac{1}{3}$.
+    \end{proof}
+\end{answer}
+
+\subsection{Part b}
+
+\begin{question}
+    Use part (a) to prove that if $|A|>0$, then $A$ contains an arithmetic progression of length 3.
+\end{question}
+
+\begin{answer}
+    
+\end{answer}

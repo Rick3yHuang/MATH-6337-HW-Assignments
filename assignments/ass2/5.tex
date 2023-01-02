@@ -1,0 +1,26 @@
+\section{Question 5}
+
+\begin{question}
+    Prove that $\ell^2$, considered as a normed space over $\mathbb{C}$, is separable.
+\end{question}
+
+\begin{answer}
+    \begin{proof}
+        Let $E = \{x \in C_{00} \mid x_j \in \mathbb{Q},\; \forall j \in \mathbb{
+        N}\}$. Then $E$ is countable. Let $x \in \ell^2$ and $\epsilon > 0$, $\exists y \in C_{00}$ such that $\lVert x - y \rVert_2 < \tfrac{\epsilon}{2}$ for 
+        \begin{equation}
+            y = (y_1,y_2,\cdots,y_N,0,0,\cdots.)
+        \end{equation}
+        For all $1 \leq j \leq N$, let $q_j \in \mathbb{Q}$ be such that $\lvert y_j-q_j \rvert < \tfrac{\epsilon}{2\sqrt{N}}$. Let $b = (q_1,q_2,\cdots,q_N,0,0\cdots) \in E$.
+        
+        Then,
+        \begin{equation}
+            \lVert y - b \rVert_2 =\left(\sum_{j=1}^{\infty}\lvert y_j - q_j\rvert^2\right)^{\frac{1}{2}} < (N\cdot \tfrac{\epsilon^2}{4N})^{\frac{1}{2}} = \sqrt{\tfrac{\epsilon^2}{4}} = \tfrac{\epsilon}{2}.
+        \end{equation}
+        Thus, 
+        \begin{equation}
+            \lVert x - b\rVert_2 \leq \lVert x - y \lVert_2 + \lVert y - b \rVert_2 < \tfrac{\epsilon}{2} + \tfrac{\epsilon}{2} = \epsilon.
+        \end{equation}
+        Thus, $\Bar{E} = \ell^2$. Hence, $\ell^2$ is separable.
+    \end{proof}
+\end{answer}
